@@ -2,7 +2,7 @@ package org.example.model;
 
 import jakarta.persistence.*;
 
-
+@Data
 @Entity
 @Table(name = "event_team")
 public class EventTeam {

@@ -2,7 +2,7 @@ package org.example.controller;
 
 import org.example.model.UserEmployee;
 import org.example.service.UserService;
-import org.example.service.inputDto.LoginRequest;
+import org.example.service.inputDto.LoginRequestDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,14 +30,14 @@ public class UserApi {
 //        return ResponseEntity.status(404).body("Username or Password not found");
 //    }
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> login(@RequestBody LoginRequestDto loginRequestDto) {
 
-        System.out.println("Username: " + loginRequest.getUsername());
-        System.out.println("Password: " + loginRequest.getPassword());
+        System.out.println("Username: " + loginRequestDto.getUsername());
+        System.out.println("Password: " + loginRequestDto.getPassword());
 
 
 
-        UserEmployee userEmployeeOptional = userService.login(loginRequest);
+        UserEmployee userEmployeeOptional = userService.login(loginRequestDto);
             if (userEmployeeOptional != null) {
                 System.out.println("Login successful for userbe: " + userEmployeeOptional.getUsername());
 

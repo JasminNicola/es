@@ -2,7 +2,7 @@ package org.example.service;
 
 import org.example.model.UserEmployee;
 import org.example.repository.UserRepository;
-import org.example.service.inputDto.LoginRequest;
+import org.example.service.inputDto.LoginRequestDto;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,11 +25,11 @@ public class UserService {
 //           //     .body("Username or Password not found");
 //}
 
-    public UserEmployee login(LoginRequest loginRequest) {
-        System.out.println("im UserService angekommen"+loginRequest.getUsername());
+    public UserEmployee login(LoginRequestDto loginRequestDto) {
+        System.out.println("im UserService angekommen"+ loginRequestDto.getUsername());
         return userRepository.findByUsernameAndPassword(
-                loginRequest.getUsername(),
-                loginRequest.getPassword()
+                loginRequestDto.getUsername(),
+                loginRequestDto.getPassword()
         );
     }
 

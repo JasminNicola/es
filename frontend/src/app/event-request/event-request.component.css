@@ -1,0 +1,31 @@
+.btn-secondary:hover { border-color: var(--muted); color: var(--text); }
+
+.btn-primary {
+  padding: 10px 28px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border: none;
+  border-radius: var(--radius);
+  color: #111;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity .2s;
+  min-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-primary:hover:not(:disabled) { opacity: .88; }
+.btn-primary:disabled { opacity: .4; cursor: not-allowed; }
+
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid #111;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+

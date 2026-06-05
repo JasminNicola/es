@@ -1,11 +1,13 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "historical_event")
-public class HistoricalEvent {
+@Table(name = "ai_analyse")
+public class AiAnalyse {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,25 +17,15 @@ public class HistoricalEvent {
     private Integer participants;
     private String location;
 
-//    @OneToMany(mappedBy = "historicalEvent")
-//    private EventTeam eventTeam;
-//    public HistoricalEvent() {
-//    }
+    public AiAnalyse() {
+    }
 
-    public HistoricalEvent(Long id,String name, String description, String date, Integer participants, String location) {//,EventTeam eventTeam
+    public AiAnalyse(String name, String description, String date, Integer participants, String location) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.date = date;
         this.participants = participants;
         this.location = location;
-     //   this.eventTeam = eventTeam;
-
-
     }
-
-    public HistoricalEvent() {
-
-    }
-
 }

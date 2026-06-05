@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,7 @@ export class LoginComponent {
   errorMessage = '';
   response:string='';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
 onLogin(username: string, password: string) {
     this.errorMessage='';
@@ -36,7 +38,9 @@ onLogin(username: string, password: string) {
         this.errorMessage = 'Login failed. Please check your credentials.';
       }
     });
-
-
 }
+  goToEventRequest() {
+
+    this.router.navigate(['/event-request']);
+  }
 }
