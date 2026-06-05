@@ -39,8 +39,8 @@ onLogin(username: string, password: string) {
       }
     });
 }
-  goToEventRequest() {
+  goToDashboard() {
 
-    this.router.navigate(['/event-request']);
+    this.router.navigate(['/dashboard']);
   }
 }

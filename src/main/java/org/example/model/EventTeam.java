@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "event_team")
-public class EventTeam {
+public class EventTeam {//Responsible for organizing the event, can be assigned to multiple EventRequests
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

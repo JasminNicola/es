@@ -21,8 +21,7 @@ public class HistoricalEvent {
 //    public HistoricalEvent() {
 //    }
 
-    public HistoricalEvent(Long id,String name, String description, String date, Integer participants, String location) {//,EventTeam eventTeam
-        this.id = id;
+    public HistoricalEvent(String name, String description, String date, Integer participants, String location) {//,EventTeam eventTeam
         this.name = name;
         this.description = description;
         this.date = date;

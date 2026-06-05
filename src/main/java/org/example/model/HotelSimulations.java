@@ -21,7 +21,6 @@ public class HotelSimulations {
         }
 
         public HotelSimulations(String hotelName, String city, Integer numberOfRooms,Integer availableRooms, Double pricePerNight) {
-            this.id =id;
             this.hotelName = hotelName;
             this.city = city;
             this.numberOfRooms = numberOfRooms;

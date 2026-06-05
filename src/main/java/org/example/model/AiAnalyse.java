@@ -21,7 +21,6 @@ public class AiAnalyse {
     }
 
     public AiAnalyse(String name, String description, String date, Integer participants, String location) {
-        this.id = id;
         this.name = name;
         this.description = description;
         this.date = date;

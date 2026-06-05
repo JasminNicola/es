@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import {EventRequestComponent} from "./event-request/event-request.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 export const routes: Routes = [
   {
@@ -16,5 +17,9 @@ export const routes: Routes = [
   {
     path: 'event-request',
     component: EventRequestComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
   }
 ];

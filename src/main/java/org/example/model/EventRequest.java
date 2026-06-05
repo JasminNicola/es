@@ -21,13 +21,12 @@ public class EventRequest {
     private EventType eventType;
     private String    catering;          // NONE | BEVERAGES | SNACKS | FULL_MEALS
     private String    specialNotes;
-    private String status; // z.B. "pending", "approved", "rejected"
+    private EventStatus status; // z.B. "pending", "approved", "rejected"
     // Special guest: "approved" -> HistoricalEvent, "rejected" -> EventRequest bleibt aber mit Status "rejected"
     //
     public EventRequest() {
     }
-    public EventRequest(String name, String description, String date, Integer participants, String location, boolean internationalGuests, EventType eventType, String catering, String specialNotes, String status) {
-        this.id = id;
+    public EventRequest(String name, String description, String date, Integer participants, String location, boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
         this.name = name;
         this.description = description;
         this.date = date;
@@ -38,6 +37,19 @@ public class EventRequest {
         this.catering = catering; //Todo ENUM
         this.specialNotes = specialNotes;
         this.status = status;
+    }
+
+    public void createNewEventRequest(String name, String description, String date, Integer participants, String location, boolean internationalGuests, EventType eventType, String catering, String specialNotes) {
+        this.name = name;
+        this.description = description;
+        this.date = date;
+        this.participants = participants;
+        this.location = location;
+        this.internationalGuests = internationalGuests;
+        this.eventType = eventType;
+        this.catering = catering; //Todo ENUM
+        this.specialNotes = specialNotes;
+        this.status = EventStatus.PENDING; // Standardstatus bei Erstellung
     }
 
 }
