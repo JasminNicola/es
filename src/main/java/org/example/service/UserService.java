@@ -1,14 +1,9 @@
 package org.example.service;
 
-import org.example.model.User;
+import org.example.model.UserEmployee;
 import org.example.repository.UserRepository;
 import org.example.service.inputDto.LoginRequest;
-import org.example.service.outputDto.UserDtoOutput;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -30,7 +25,7 @@ public class UserService {
 //           //     .body("Username or Password not found");
 //}
 
-    public User login(LoginRequest loginRequest) {
+    public UserEmployee login(LoginRequest loginRequest) {
         System.out.println("im UserService angekommen"+loginRequest.getUsername());
         return userRepository.findByUsernameAndPassword(
                 loginRequest.getUsername(),

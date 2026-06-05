@@ -1,13 +1,2 @@
-
-CREATE TABLE IF NOT EXISTS users (
-                                     id INT AUTO_INCREMENT PRIMARY KEY,
-                                     username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL
-    );
-
-INSERT INTO users (username, password, email)
-VALUES ('testuser', '123', 'test@user.com');
-
-INSERT INTO users (username, password, email)
-VALUES ('a', 'a', 'test.a@user.com');
+insert into user_employee (username, password, email) values ('a', 'a','a@a.a');
+insert into user_employee (username, password, email) values ('testuser', '123','test@user.com');

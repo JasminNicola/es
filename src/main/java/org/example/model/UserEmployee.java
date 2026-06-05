@@ -3,8 +3,8 @@ package org.example.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "user_employee")
+public class UserEmployee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +14,11 @@ public class User {
     private String password; // normalerweise verschlüsseln
     private String email;
 
-    public User() {
+    public UserEmployee() {
     }
 
-    public User(String username, String password, String email) {
+    public UserEmployee(String username, String password, String email) {
+       this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;

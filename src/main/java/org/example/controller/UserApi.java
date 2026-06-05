@@ -1,14 +1,12 @@
 package org.example.controller;
 
-import org.example.model.User;
+import org.example.model.UserEmployee;
 import org.example.service.UserService;
 import org.example.service.inputDto.LoginRequest;
-import org.example.service.outputDto.UserDtoOutput;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.Optional;
 
 
 @RestController
@@ -39,11 +37,11 @@ public class UserApi {
 
 
 
-        User userOptional = userService.login(loginRequest);
-            if (userOptional != null) {
-                System.out.println("Login successful for userbe: " + userOptional.getUsername());
+        UserEmployee userEmployeeOptional = userService.login(loginRequest);
+            if (userEmployeeOptional != null) {
+                System.out.println("Login successful for userbe: " + userEmployeeOptional.getUsername());
 
-                return ResponseEntity.ok(Map.of("message", "Hi " + userOptional.getUsername() + " Login successful"))
+                return ResponseEntity.ok(Map.of("message", "Hi " + userEmployeeOptional.getUsername() + " Login successful"))
                         ;
 
             }
