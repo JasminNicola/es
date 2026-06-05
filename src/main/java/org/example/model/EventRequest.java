@@ -12,6 +12,10 @@ public class EventRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private UserEmployee owner; // hat Anfrage gestellt
+
     private String name;
     private String description;
     private String date;

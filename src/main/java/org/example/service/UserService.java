@@ -26,11 +26,26 @@ public class UserService {
 //}
 
     public UserEmployee login(LoginRequestDto loginRequestDto) {
-        System.out.println("im UserService angekommen"+ loginRequestDto.getUsername());
-        return userRepository.findByUsernameAndPassword(
+        System.out.println("im UserService angekommen" + loginRequestDto.getUsername());
+        // todo wenn daten stimmen dann isLoggedIn auf true setzen und wenn nicht dann false
+
+        UserEmployee user = userRepository.findByUsernameAndPassword(
                 loginRequestDto.getUsername(),
                 loginRequestDto.getPassword()
         );
+        user.setIsLoggedIn();
+        userRepository.save(user);
+        return user;
     }
+
+    //todo logout methode hinzufügen, die isLoggedIn auf false setzt
+    public void logout() {
+        UserEmployee user = userRepository.findByIsLoggedIn(true);
+        if (user != null) {
+            user.setIsLoggedOut();
+            userRepository.save(user);
+        }
+    }
+
 
 }

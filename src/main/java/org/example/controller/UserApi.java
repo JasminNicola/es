@@ -29,5 +29,11 @@ public class UserApi {
                 .body("Username or Password not found");
     }
 
+    @PostMapping("/logout")
+    public void logout() {
+        userService.logout();
+    }
+
+
 
 }

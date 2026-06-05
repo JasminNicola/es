@@ -43,4 +43,20 @@ onLogin(username: string, password: string) {
 
     this.router.navigate(['/dashboard']);
   }
+
+  logout() {
+    this.http.post(
+      'http://localhost:8080/api/logout',{})
+      .subscribe({
+        next: (response: any) => {
+          console.log('Logout successful:', response);
+          this.response = response.message;
+          // Handle successful login, e.g., navigate to a different page
+        },
+        error: (error) => {
+          console.error('Login failed:', error);
+          this.errorMessage = 'Logout failed. Please try again.';
+        }
+      });
+  }
 }

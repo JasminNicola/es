@@ -1,6 +1,8 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 
 @Entity
 @Table(name = "user_employee")
@@ -13,14 +15,16 @@ public class UserEmployee {
     private String username;
     private String password; // normalerweise verschlüsseln
     private String email;
+    private Boolean isLoggedIn;
 
     public UserEmployee() {
     }
 
     public UserEmployee(String username, String password, String email) {
-        this.username = username;
+                this.username = username;
         this.password = password;
         this.email = email;
+        this.isLoggedIn = false; // Standardmäßig auf false setzen
     }
 
     public Long getId() { return id; }
@@ -31,6 +35,11 @@ public class UserEmployee {
     public void setPassword(String password) { this.password = password; }
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+    public Boolean getIsLoggedIn() { return isLoggedIn; }
+    public void setIsLoggedIn() { this.isLoggedIn = true; }
+    public void setIsLoggedOut() { this.isLoggedIn = false; }
+
+
 
 
 
