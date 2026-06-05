@@ -9,21 +9,23 @@ import lombok.Data;
 public class HotelSimulations {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
         private String hotelName;
         private String city;
         private Integer numberOfRooms;
         private Integer availableRooms;
-        private double pricePerNight;
+        private Double pricePerNight;
 
 
         public HotelSimulations() {
         }
 
-        public HotelSimulations(String hotelName, String city, int numberOfRooms, double pricePerNight) {
+        public HotelSimulations(String hotelName, String city, Integer numberOfRooms,Integer availableRooms, Double pricePerNight) {
+            this.id =id;
             this.hotelName = hotelName;
             this.city = city;
             this.numberOfRooms = numberOfRooms;
-            this.availableRooms = numberOfRooms; 
+            this.availableRooms = availableRooms;
             this.pricePerNight = pricePerNight;
 
         }
