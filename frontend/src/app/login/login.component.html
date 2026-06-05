@@ -1,0 +1,40 @@
+<p>login works!</p>
+
+
+<div class="login-box">
+  <h2>Anmeldung</h2>
+
+  <!-- Zeigt eine Fehlermeldung, falls die Daten falsch sind -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <form (ngSubmit)="onLogin(username,password)">
+    <!-- 1. Feld: Benutzername -->
+    <div class="input-group">
+      <label for="username">Benutzername:</label>
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        name="username"
+        required>
+    </div>
+
+    <!-- 2. Feld: Passwort -->
+    <div class="input-group">
+      <label for="password">Passwort:</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        required>
+    </div>
+
+    <!-- Absendebutton -->
+    <button type="submit">Einloggen</button>
+  </form>
+  <p>??{{response}}</p>
+</div>
+
+

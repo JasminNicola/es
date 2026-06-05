@@ -1,0 +1,4 @@
+2026-06-03 18:35:56.695032+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabelle "USERS" nicht gefunden (diese Datenbank ist leer)
+Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users (username, password, email) VALUES ('testuser', '123', 'test@user.com') [42104-224]
