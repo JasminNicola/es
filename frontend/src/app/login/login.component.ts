@@ -19,42 +19,24 @@ export class LoginComponent {
 
   constructor(private http: HttpClient) {}
 
-/**  onLogin(username: string, password: string) {
-    this.http.post(
-      'http://localhost:8080/api/login?username=',
-      {username: username, password: password})
-      .subscribe({
-        next: (response: any) => {
-          console.log('Login successful:', response);
-          this.response=response.message;
-          // Handle successful login, e.g., navigate to a different page
-        },
-        error: (error) => {
-          console.error('Login failed:', error);
-          this.errorMessage = 'Login failed. Please check your credentials.';
-        }
+onLogin(username: string, password: string) {
+    this.errorMessage='';
+    this.response='';
+  this.http.post(
+    'http://localhost:8080/api/login?username=',
+    {username: username, password: password})
+    .subscribe({
+      next: (response: any) => {
+        console.log('Login successful:', response);
+        this.response = response.message;
+        // Handle successful login, e.g., navigate to a different page
+      },
+      error: (error) => {
+        console.error('Login failed:', error);
+        this.errorMessage = 'Login failed. Please check your credentials.';
+      }
     });
 
-*/
 
-onLogin(username: string, password: string) {
-  this.http.post(
-    'http://localhost:8080/api/login',  // ← saubere URL, kein Query-Parameter
-    { username: username, password: password }
-  ).subscribe({
-    next: (response: any) => {
-      console.log('Login successful:', response);
-      this.response = response.message;
-    },
-    error: (error) => {
-      console.error('Login failed:', error);
-      this.errorMessage = 'Login failed. Please check your credentials.';
-    }
-  });
 }
-
-
-
-
-
 }

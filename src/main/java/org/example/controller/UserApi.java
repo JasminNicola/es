@@ -7,6 +7,7 @@ import org.example.service.outputDto.UserDtoOutput;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -31,7 +32,7 @@ public class UserApi {
 //        return ResponseEntity.status(404).body("Username or Password not found");
 //    }
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
 
         System.out.println("Username: " + loginRequest.getUsername());
         System.out.println("Password: " + loginRequest.getPassword());
@@ -40,10 +41,10 @@ public class UserApi {
 
         User userOptional = userService.login(loginRequest);
             if (userOptional != null) {
-                System.out.println("Login successful for user: " + userOptional.getUsername());
+                System.out.println("Login successful for userbe: " + userOptional.getUsername());
 
-                return ResponseEntity.ok(
-                        "Hi " + userOptional.getUsername() + " Login successful");
+                return ResponseEntity.ok(Map.of("message", "Hi " + userOptional.getUsername() + " Login successful"))
+                        ;
 
             }
 //        if (userOptional.isPresent()) {
