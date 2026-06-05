@@ -37,6 +37,10 @@ public class UserService {
         userRepository.save(user);
         return user;
     }
+    public UserEmployee getLoggedInUserId() {
+        return userRepository.findByIsLoggedIn(true);
+
+    }
 
     //todo logout methode hinzufügen, die isLoggedIn auf false setzt
     public void logout() {
