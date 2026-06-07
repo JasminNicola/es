@@ -5,15 +5,12 @@ import org.example.model.EventStatus;
 import org.example.service.EventRequestService;
 import org.example.service.inputDto.EventRequestDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
-@RequestMapping("/event-requests")
+@RequestMapping("/events")
 public class EventRequestApi {
 
     private final EventRequestService eventRequestService;
@@ -22,18 +19,9 @@ public class EventRequestApi {
         this.eventRequestService = eventRequestService;
     }
 
-    @PostMapping("/events")
+    @PostMapping("/create-request")
     public ResponseEntity<?> createEvent(@RequestBody EventRequestDto request) {
 
-        System.out.println("Neue Eventanfrage: " + request.getName());
-        System.out.println("Datum:             " + request.getDate());
-        System.out.println("Ort:               " + request.getLocation());
-        System.out.println("Teilnehmer:        " + request.getParticipants());
-        System.out.println("Typ:               " + request.getEventType());
-        System.out.println("Intern. Gäste:     " + request.isInternationalGuests());
-        System.out.println("Catering:          " + request.getCatering());
-
-        // TODO: in Datenbank speichern via Service/Repository
         this.eventRequestService.createEventRequest(
                 request.getName(),
                 request.getDescription(),
@@ -44,11 +32,34 @@ public class EventRequestApi {
                 request.getEventType(),
                 request.getCatering(),
                 request.getSpecialNotes(),
-                EventStatus.PENDING // TODO: Status auf "PENDING" setzen
+                EventStatus.PENDING
         );
         return ResponseEntity.ok(
                 Map.of("message", "Eventanfrage für '" + request.getName() + "' erfolgreich übermittelt!")
         );
     }
+
+    // PUT  /api/events/{id}   → EventItem aktualisieren
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id,
+                                    @RequestBody EventRequestDto updated) {
+
+        return this.eventRequestService.updateEventRequest(id,updated);
+    }
+
+    // DELETE /api/events/{id} → EventItem löschen
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        return this.eventRequestService.deleteEventRequest(id);
+
+    }
+
+    @GetMapping()
+    public ResponseEntity<?> getAllPendingEvents() {
+        return ResponseEntity.ok(this.eventRequestService.getAllEventsByUser());
+    }
+
+
+
 
 }

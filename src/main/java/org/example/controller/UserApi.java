@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.model.UserEmployee;
+import org.example.service.outputDto.UserDtoOutput;
 import org.example.service.UserService;
 import org.example.service.inputDto.LoginRequestDto;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +22,7 @@ public class UserApi {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequestDto loginRequestDto) {
-        UserEmployee userEmployeeOptional = userService.login(loginRequestDto);
+        UserDtoOutput userEmployeeOptional = userService.login(loginRequestDto);
             if (userEmployeeOptional != null) {
                 return ResponseEntity.ok(Map.of("message", "Hi " + userEmployeeOptional.getUsername() + " Login successful"));
             }
@@ -30,8 +31,8 @@ public class UserApi {
     }
 
     @PostMapping("/logout")
-    public void logout() {
-        userService.logout();
+    public Boolean logout() {
+        return userService.logout();
     }
 
 

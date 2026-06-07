@@ -10,9 +10,14 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'home',
+    component: HomeComponent
+  }
+  /**,
+  {
     path: 'login',
     component: LoginComponent
-  }
+  }*/
   ,
   {
     path: 'event-request',

@@ -1,13 +1,14 @@
 <p>event-request works!</p>
-<button (click)="goToLogin()" )>Zum Event Request</button>
+<button (click)="goToLogin()" )>Zum EventItem Request</button>
 
+ <!--Todo  *ngIf="authService.isLoggedIn() -->
 <div class="page-wrapper">
   <div class="form-card">
 
     <div class="form-header">
       <div class="header-accent"></div>
       <h1>Eventanfrage</h1>
-      <p class="subtitle">Planen Sie Ihr nächstes unvergessliches Event</p>
+      <p class="subtitle">Planen Sie Ihr nächstes unvergessliches EventItem</p>
     </div>
 
     <form (ngSubmit)="onSubmit()" #eventForm="ngForm" class="event-form">

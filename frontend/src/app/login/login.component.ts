@@ -18,6 +18,7 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
   response:string='';
+  loggedIn = false;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -31,17 +32,15 @@ onLogin(username: string, password: string) {
       next: (response: any) => {
         console.log('Login successful:', response);
         this.response = response.message;
+        this.loggedIn = true;
         // Handle successful login, e.g., navigate to a different page
       },
       error: (error) => {
         console.error('Login failed:', error);
         this.errorMessage = 'Login failed. Please check your credentials.';
+
       }
     });
-}
-  goToDashboard() {
-
-    this.router.navigate(['/dashboard']);
   }
 
   logout() {
@@ -52,6 +51,7 @@ onLogin(username: string, password: string) {
           console.log('Logout successful:', response);
           this.response = response.message;
           // Handle successful login, e.g., navigate to a different page
+          this.loggedIn = false;
         },
         error: (error) => {
           console.error('Login failed:', error);
@@ -59,4 +59,9 @@ onLogin(username: string, password: string) {
         }
       });
   }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+
 }

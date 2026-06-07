@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {AuthService} from "../auth.service";
 
 export type EventType = 'HALF_DAY' | 'FULL_DAY' | 'MULTI_DAY';
 
@@ -50,7 +51,7 @@ export class EventRequestComponent {
     this.successMessage = '';
     this.errorMessage = '';
 
-    this.http.post('http://localhost:8080/event-requests/events', this.eventRequest)
+    this.http.post('http://localhost:8080/events/create-request', this.eventRequest)
       .subscribe({
         next: (response: any) => {
           this.isLoading = false;
@@ -60,7 +61,7 @@ export class EventRequestComponent {
         error: (error) => {
           this.isLoading = false;
           this.errorMessage = 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es erneut.';
-          console.error('Event request failed:', error);
+          console.error('EventItem request failed:', error);
         }
       });
   }
@@ -89,4 +90,6 @@ export class EventRequestComponent {
 
     this.router.navigate(['/login']);
   }
+
+    protected readonly AuthService = AuthService;
 }

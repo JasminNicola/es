@@ -22,6 +22,7 @@ public class EventRequest {
     private Integer participants;
     private String location;
     private boolean   internationalGuests;
+    //@Enumerated(EnumType.STRING)
     private EventType eventType;
     private String    catering;          // NONE | BEVERAGES | SNACKS | FULL_MEALS
     private String    specialNotes;
@@ -51,7 +52,7 @@ public class EventRequest {
         this.location = location;
         this.internationalGuests = internationalGuests;
         this.eventType = eventType;
-        this.catering = catering; //Todo ENUM
+        this.catering = catering; //Todo ENUM?
         this.specialNotes = specialNotes;
         this.status = EventStatus.PENDING; // Standardstatus bei Erstellung
     }

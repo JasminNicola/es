@@ -1,2 +1,19 @@
 <p>home works!</p>
-<button (click)="goToLogin()" )>Zum Login</button>
+
+<div class="home-container" *ngIf="authService.isLoggedIn()">
+
+  <div class="welcome-message" >
+      <h1>Willommen zur Eventbuchung</h1>
+      <p>Ume ein EventItem zur übersicht zu gelangen,</p>
+      <button (click)="goToDashboard()"> Go to Dashboard </button>
+  </div>
+
+
+
+</div>
+
+<div class="to-start-login" *ngIf="!authService.isLoggedIn()">
+  <h1><3-lich Wilkommen</h1>
+  <p>Bitte loggen Sie sich ein, um fortzufahren.</p>
+</div>
+
