@@ -1,12 +1,19 @@
 <p>dashboard works!</p>
 <button (click)="goToEventRequest()" )>Zum EventItem Request</button>
+
+<div >
+  Hallo
+</div>
+
+<button (click)="getUsersEvents()">Events laden</button>
+
+
 <div class="filter-bereich">
   <input type="text" placeholder="Nach Event suchen..." (input)="filtereEvents($event)">
 </div>
 
-<!-- Container für die vertikale Liste -->
+< Container für die vertikale Liste >
 <div class="event-liste">
-  <!-- Statische Kopfzeile -->
   <div class="event-zeile header-zeile">
     <span class="spalten-titel">Id</span>
     <span class="spalten-titel">Eventname</span>
@@ -22,8 +29,11 @@
     <span class="spalten-titel aktionen-titel">Action</span>
   </div>
 
-  <div *ngFor="let event of gefilterteEvents" class="event-zeile">
-    <!-- Infos nebeneinander -->
+  <ng-template #noEvents>
+    <p>No events available.</p>
+  </ng-template>
+
+  <div *ngFor="let event of eventsItems" >
     <div class="event-info">
       <span class="event-id">{{ event.id }}</span>
       <span class="event-titel">{{ event.name }}</span>
@@ -38,7 +48,6 @@
       <span class="event-status">{{ event.status }}</span>
     </div>
 
-    <!-- Button-Bereich rechtsbündig -->
     <div class="event-aktionen">
       <button (click)="bearbeiteEvent(event.id)" class="btn-bearbeiten">Bearbeiten</button>
     </div>

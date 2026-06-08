@@ -6,11 +6,14 @@ import org.example.model.EventType;
 import org.example.model.UserEmployee;
 import org.example.repository.EventRequestRepository;
 import org.example.service.inputDto.EventRequestDto;
+import org.example.service.outputDto.EventRequestDtoOutput;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,13 +27,14 @@ public class EventRequestService {
         this.userService = userService;
     }
 
-    public void createEventRequest(String name, String description, String date, Integer participants, String location, boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
+    public void createEventRequest(String name, String description, String date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
         EventRequest eventRequest = new EventRequest(name, description, date, participants, location, internationalGuests, eventType, catering, specialNotes, status);
         UserEmployee owner= this.userService.getLoggedInUserId();
         if (owner != null) {
             eventRequest.setOwner(owner);
         }
         this.eventRequestRepository.save(eventRequest);
+        //TODO Save Eventrequest to User
     }
 
 
@@ -43,7 +47,7 @@ public class EventRequestService {
             eventRequest.setDate(updated.getDate());
             eventRequest.setParticipants(updated.getParticipants());
             eventRequest.setLocation(updated.getLocation());
-            eventRequest.setInternationalGuests(updated.isInternationalGuests());
+            eventRequest.setInternationalGuests(updated.getInternationalGuests());
             eventRequest.setEventType(updated.getEventType());
             eventRequest.setCatering(updated.getCatering());
             eventRequest.setSpecialNotes(updated.getSpecialNotes());
@@ -63,9 +67,14 @@ public class EventRequestService {
 
     public ResponseEntity<?> getAllEventsByUser() {
         Long id =this.userService.getLoggedInUserId().getId();
-        EventRequestDto eventRequestDto = this.eventRequestRepository.findByOwnerId(id);
-        System.out.println("EventRequestDto: " + eventRequestDto + " wurde in db gefunden und wird jetzt zurückgegeben");
-        return ResponseEntity.ok(eventRequestDto);
+        System.out.println("User ID: " + id);
+       //EventRequestDto eventRequestDto = this.eventRequestRepository.findByOwnerId(id);
+        //System.out.println("EventRequestDto: " + eventRequestDto + " wurde in db gefunden und wird jetzt zurückgegeben");
+        List<EventRequestDtoOutput>eventRequestDtos= this.eventRequestRepository.getEventRequestByOwnerId(id);
+
+        System.out.println("EventRequestDtos: " + eventRequestDtos + " wurden in db gefunden und werden jetzt zurückgegeben");
+        return ResponseEntity.ok(eventRequestDtos);
 
     }
+
 }

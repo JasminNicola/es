@@ -4,13 +4,15 @@ import org.example.model.EventRequest;
 import org.example.model.EventStatus;
 import org.example.service.EventRequestService;
 import org.example.service.inputDto.EventRequestDto;
+import org.example.service.outputDto.EventRequestDtoOutput;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/events")
+@RequestMapping("/api")
 public class EventRequestApi {
 
     private final EventRequestService eventRequestService;
@@ -19,7 +21,7 @@ public class EventRequestApi {
         this.eventRequestService = eventRequestService;
     }
 
-    @PostMapping("/create-request")
+    @PostMapping("/events/create-request")
     public ResponseEntity<?> createEvent(@RequestBody EventRequestDto request) {
 
         this.eventRequestService.createEventRequest(
@@ -28,7 +30,7 @@ public class EventRequestApi {
                 request.getDate(),
                 request.getParticipants(),
                 request.getLocation(),
-                request.isInternationalGuests(),
+                request.getInternationalGuests(),
                 request.getEventType(),
                 request.getCatering(),
                 request.getSpecialNotes(),
@@ -40,7 +42,7 @@ public class EventRequestApi {
     }
 
     // PUT  /api/events/{id}   → EventItem aktualisieren
-    @PutMapping("/{id}")
+    @PutMapping("/events/{id}")
     public ResponseEntity<?> update(@PathVariable Long id,
                                     @RequestBody EventRequestDto updated) {
 
@@ -48,15 +50,20 @@ public class EventRequestApi {
     }
 
     // DELETE /api/events/{id} → EventItem löschen
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/events/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         return this.eventRequestService.deleteEventRequest(id);
 
     }
 
-    @GetMapping()
+    @GetMapping("/events")
     public ResponseEntity<?> getAllPendingEvents() {
-        return ResponseEntity.ok(this.eventRequestService.getAllEventsByUser());
+
+       List<EventRequestDtoOutput> response= (List<EventRequestDtoOutput>) this.eventRequestService.getAllEventsByUser().getBody();
+        System.out.println("Response in Controller: " + response );
+       return  ResponseEntity.ok(
+                Map.of("message", "Alle Eventanfragen erfolgreich abgerufen!",
+                        "response", response)      );
     }
 
 

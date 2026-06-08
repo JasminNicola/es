@@ -51,7 +51,7 @@ export class EventRequestComponent {
     this.successMessage = '';
     this.errorMessage = '';
 
-    this.http.post('http://localhost:8080/events/create-request', this.eventRequest)
+    this.http.post('http://localhost:8080/api/events/create-request', this.eventRequest)
       .subscribe({
         next: (response: any) => {
           this.isLoading = false;

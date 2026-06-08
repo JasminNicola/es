@@ -21,6 +21,6 @@ VALUES (0, FALSE, 100,   0,    1,     TRUE,    '2026-08-15',           'Annual t
 
        (2, FALSE, 25, 1, 1, FALSE, '2026-09-05', 'Developer workshop',       'Berlin',   'Java Workshop',      'Bring laptop'),
 
-       (0, TRUE, 80, 0, 1, TRUE,  '2026-10-20', 'Business networking',      'Munich',   'Business Connect',   'Name badges required'),
+       (0, TRUE, 80, 0, 2, TRUE,  '2026-10-20', 'Business networking',      'Munich',   'Business Connect',   'Name badges required'),
 
        (1, FALSE, 40, 2, 1, TRUE,  '2026-11-12', 'Training session',         'Cologne',  'Leadership Training', 'Internal event');

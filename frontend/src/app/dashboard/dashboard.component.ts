@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 
 
 
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -17,7 +18,7 @@ import {HttpClient} from "@angular/common/http";
 export class DashboardComponent{
 
   constructor(private router: Router, private http: HttpClient) {
-    //this.allEvents=this.getUsersEvents();
+
   }
 
 
@@ -28,10 +29,11 @@ export class DashboardComponent{
 
 //allEvents: EventItem[] = this.getUsersEvents();
   // Ihre vollständige Original-Liste
-allEvents:EventItem []= [
+allEvents:EventItem []= [];//this.getUsersEvents()
+  /*[
     { id: 1, name: 'Angular Workshop', date: '2026-07-15' ,location: 'Darmstadt',participants:500,internationalGuests: true, eventType: 'FULL_DAY', catering: 'FULL_MEALS', status: 'confirmed', description: 'Ein ganztägiger Workshop zu Angular.', specialNotes: 'Bringen Sie Ihren Laptop mit.'  },
     { id: 2, name: 'TypeScript Meetup', date: '2026-08-22' ,location: 'Darmstadt / Online', participants:85 , internationalGuests: false, eventType: 'HALF_DAY', catering: 'BEVERAGES', status: 'pending', description: 'Ein halbtägiges Meetup zu TypeScript.', specialNotes: 'Kostenlose Getränke.'},
-  ];
+  ];*/
 
 
 
@@ -49,17 +51,20 @@ allEvents:EventItem []= [
   }
 
   // Methode für den Bearbeiten-Button
+  eventsItems: any;
+
   bearbeiteEvent(eventId: number) {
     console.log('Bearbeite Event mit ID:', eventId);
     // Hier öffnen Sie z. B. ein Modal oder leiten den Nutzer weiter
   }
 
   getUsersEvents() {
-    this.http.get<EventItem[]>('http://localhost:8080/api/events')
+    this.http.get<any>('http://localhost:8080/api/events')
       .subscribe({
         next: (response:any) => {
-          console.log('Events erfolgreich geladen:', response);
-          this.allEvents = response;
+          this.eventsItems = response.response;
+          this.allEvents = this.eventsItems; // Alle Events in allEvents speichern
+
           },
       error: (error) => {
         console.error('Fehler beim Laden der Events:', error);

@@ -2,6 +2,8 @@ package org.example.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "user_employee")
@@ -15,6 +17,11 @@ public class UserEmployee {
     private String password; // normalerweise verschlüsseln
     private String email;
     private Boolean isLoggedIn;
+
+
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EventRequest> eventRequests;
 
     public UserEmployee() {
     }

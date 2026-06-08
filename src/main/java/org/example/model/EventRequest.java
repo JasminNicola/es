@@ -14,14 +14,14 @@ public class EventRequest {
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
-    private UserEmployee owner; // hat Anfrage gestellt
+    private UserEmployee owner;
 
     private String name;
     private String description;
     private String date;
     private Integer participants;
     private String location;
-    private boolean   internationalGuests;
+    private Boolean   internationalGuests;
     //@Enumerated(EnumType.STRING)
     private EventType eventType;
     private String    catering;          // NONE | BEVERAGES | SNACKS | FULL_MEALS
@@ -31,7 +31,7 @@ public class EventRequest {
     //
     public EventRequest() {
     }
-    public EventRequest(String name, String description, String date, Integer participants, String location, boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
+    public EventRequest(String name, String description, String date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
         this.name = name;
         this.description = description;
         this.date = date;
@@ -44,7 +44,7 @@ public class EventRequest {
         this.status = status;
     }
 
-    public void createNewEventRequest(String name, String description, String date, Integer participants, String location, boolean internationalGuests, EventType eventType, String catering, String specialNotes) {
+    public void createNewEventRequest(String name, String description, String date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes,EventStatus status) {
         this.name = name;
         this.description = description;
         this.date = date;
