@@ -1,8 +1,8 @@
 package org.example.service;
 
 import dev.langchain4j.model.chat.ChatLanguageModel;
-import org.example.model.HistoricalEvent;
-import org.example.repository.HistoricalEventRepository;
+import org.example.model.Event;
+import org.example.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,17 +11,17 @@ import java.util.stream.Collectors;
 @Service
 public class EventAnalyserAiService {
 
-    private final HistoricalEventRepository historicalEventRepository;
     private final ChatLanguageModel chatLanguageModel;
+    private final EventRepository eventRepository;
 
-    public EventAnalyserAiService(HistoricalEventRepository historicalEventRepository, ChatLanguageModel chatLanguageModel) {
-        this.historicalEventRepository = historicalEventRepository;
+    public EventAnalyserAiService( ChatLanguageModel chatLanguageModel, EventRepository eventRepository) {
         this.chatLanguageModel = chatLanguageModel;
+        this.eventRepository = eventRepository;
     }
 
     public String analyseNewEventRequest(String newEventDescription) { //TODO Dto erstellen
 
-        List<HistoricalEvent> pastEvents = historicalEventRepository.findAll(); //.findByLocation(eventLocation);
+        List<Event> pastEvents = eventRepository.findAll(); //.findByLocation(eventLocation);//TODO abgeschlossen //TODO Rückgabe  DTO erstellen, damit nicht alle Daten übergeben werden, sondern nur relevante Informationen (z.B. Beschreibung, Team, Catering, Feedback)
 
         // 2. Ihre bestehenden Objekte in Text für Ollama umwandeln
         String pastEventInformaton = pastEvents.stream().map(e ->

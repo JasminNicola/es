@@ -21,10 +21,8 @@ public class UserEmployee {
 
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<EventRequest> eventRequests;
+    private List<Event> events;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<HistoricalEvent> historicalEvents;
 
     public UserEmployee() {
     }

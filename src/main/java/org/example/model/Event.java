@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "event_request")
-public class EventRequest {
+@Table(name = "event")
+public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +15,11 @@ public class EventRequest {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private UserEmployee owner;
+
+    @ManyToOne
+    @JoinColumn(name = "responsibleTeam_id")
+    private EventTeam responsibleTeam; // Team, das für die Durchführung des Events verantwortlich war
+
 
     private String name;
     private String description;
@@ -28,10 +33,10 @@ public class EventRequest {
     private String    specialNotes;
     private EventStatus status; // z.B. "pending", "approved", "rejected"
     // Special guest: "approved" -> HistoricalEvent, "rejected" -> EventRequest bleibt aber mit Status "rejected"
-
-    public EventRequest() {
+    private String feedback; // Feedback zum Event, z.B. aus Umfragen oder Berichten/ //TODO erst wenn das Event abgeschlossen ist
+    public Event() {
     }
-    public EventRequest(String name, String description, String date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
+    public Event(String name, String description, String date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
         this.name = name;
         this.description = description;
         this.date = date;

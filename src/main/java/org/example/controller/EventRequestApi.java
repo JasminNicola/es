@@ -1,6 +1,5 @@
 package org.example.controller;
 
-import org.example.model.EventRequest;
 import org.example.model.EventStatus;
 import org.example.service.EventRequestService;
 import org.example.service.inputDto.EventRequestDto;

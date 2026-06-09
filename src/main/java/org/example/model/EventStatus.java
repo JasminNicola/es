@@ -1,7 +1,7 @@
 package org.example.model;
 
 public enum EventStatus {
-    PENDING,
+    PENDING,//request
     APPROVED,//confirmed
     REJECTED,//canceld
     ClOSED,

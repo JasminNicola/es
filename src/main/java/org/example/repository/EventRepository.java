@@ -1,6 +1,6 @@
 package org.example.repository;
 
-import org.example.model.EventRequest;
+import org.example.model.Event;
 import org.example.model.EventStatus;
 import org.example.service.outputDto.EventRequestDtoOutput;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,10 +9,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface EventRequestRepository extends JpaRepository<EventRequest, Long> {
+public interface EventRepository extends JpaRepository<Event, Long> {
 
-        @Query("SELECT e FROM EventRequest e WHERE e.status = :status")
-        List<EventRequest> findByStatus(EventStatus status);
 
 
         @Query("""
@@ -28,7 +26,7 @@ public interface EventRequestRepository extends JpaRepository<EventRequest, Long
                                                                     e.specialNotes,
                                                                     e.status
                                                             ) from UserEmployee u
-    join u.eventRequests e
+    join u.events e
     where u.id = :ownerId
 
         """)

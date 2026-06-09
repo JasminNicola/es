@@ -1,7 +1,7 @@
 insert into user_employee (username, password, email) values ('a', 'a','a@a.a');
 insert into user_employee (username, password, email) values ('testuser', '123','test@user.com');
 
-INSERT INTO EVENT_REQUEST (
+INSERT INTO EVENT (
     EVENT_TYPE,
     INTERNATIONAL_GUESTS,
     PARTICIPANTS,
@@ -33,73 +33,25 @@ VALUES ('Event Service Team'),
          ( 'Logistics Team'),
          ( 'Technical Support Team');
 
-
-INSERT INTO HISTORICAL_EVENT
-(
-    ID,
-    OWNER_ID,
-    RESPONSIBLE_TEAM_ID,
-    NAME,
-    DESCRIPTION,
-    DATE,
-    PARTICIPANTS,
-    LOCATION,
-    INTERNATIONAL_GUESTS,
+INSERT INTO EVENT (
     EVENT_TYPE,
-    CATERING,
-    SPECIAL_NOTES,
+    INTERNATIONAL_GUESTS,
+    PARTICIPANTS,
     STATUS,
-    FEEDBACK
+    OWNER_ID,
+    CATERING,
+    DATE,
+    DESCRIPTION,
+    LOCATION,
+    NAME,
+    SPECIAL_NOTES,FEEDBACK,ResPONSIBLE_TEAM_ID
 )
 VALUES
-    (
-        1,
-        1,
-        1,
-        'Annual Technology Summit 2025',
-        'A conference focused on emerging technologies and digital transformation.',
-        '2025-03-15',
-        250,
-        'Berlin',
-        TRUE,
-        1,
-        'FULL_MEALS',
-        'Printed agendas and translation services were provided.',
-        2,
-        'Participants rated the event highly and praised the keynote speakers.'
-    ),
-    (
-        2,
-        1,
-        2,
-        'Quarterly Team Meeting Q1 2025',
-        'A meeting to discuss project updates and team performance for the first quarter.',
-        '2025-01-20',
-        30,
-        'Bremen',
-        FALSE,
-        0,
-        'SNACKS',
-        'The meeting was productive, but some participants suggested more interactive sessions.',
-        2,
-        'Overall positive feedback with suggestions for improvement in future meetings.'
-    ),
-    (
-        3,
-        1,
-        3,
-        'Developer Workshop: Java Best Practices',
-        'A workshop focused on best practices for Java development, including code quality and performance optimization.',
-        '2025-02-10',
-        20,
-        'Hamburg',
-        FALSE,
-        2,
-        'NONE',
-        'Participants appreciated the hands-on approach but requested more time for Q&A.',
-        2,
-        'The workshop was well-received, with many participants expressing interest in similar future events.'
-    );
+    (0, TRUE, 150, 4, 1, TRUE, '2026-12-01', 'End of Year Celebration', 'Berlin', 'Year-End Party', 'Great event with excellent organization.', 'Feedback was overwhelmingly positive, with many attendees praising the venue and catering.', 1),
+    (1, FALSE, 200, 4, 1, TRUE, '2026-12-15', 'Annual Review Meeting', 'Munich', 'Review 2026', 'Participants appreciated the detailed insights and planning for the next year.', 'The meeting was well-received, with constructive feedback on improving the presentation format.', 2),
+    (2, TRUE, 50, 4, 1, FALSE, '2026-12-20', 'Technical Training Workshop', 'Hamburg', 'Tech Training', 'Attendees found the workshop informative and engaging.', 'Feedback highlighted the need for more hands-on exercises in future sessions.', 3);
+
+
 
 
 

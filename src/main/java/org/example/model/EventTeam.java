@@ -1,8 +1,7 @@
 package org.example.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import org.example.repository.HistoricalEventRepository;
+
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class EventTeam {//Responsible for organizing the event, can be assigned 
 
 
     @OneToMany(mappedBy = "responsibleTeam", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<HistoricalEvent> historicalEvents;
+    private List<Event> events;
 
     private String teamname;
 
