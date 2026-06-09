@@ -23,11 +23,14 @@ public class UserEmployee {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EventRequest> eventRequests;
 
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HistoricalEvent> historicalEvents;
+
     public UserEmployee() {
     }
 
     public UserEmployee(String username, String password, String email) {
-                this.username = username;
+        this.username = username;
         this.password = password;
         this.email = email;
         this.isLoggedIn = false; // Standardmäßig auf false setzen

@@ -28,7 +28,7 @@ public class EventRequest {
     private String    specialNotes;
     private EventStatus status; // z.B. "pending", "approved", "rejected"
     // Special guest: "approved" -> HistoricalEvent, "rejected" -> EventRequest bleibt aber mit Status "rejected"
-    //
+
     public EventRequest() {
     }
     public EventRequest(String name, String description, String date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
