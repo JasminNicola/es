@@ -1,6 +1,7 @@
 package org.example.service;
 
 import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.ollama.OllamaChatModel;
 import org.example.model.Event;
 import org.example.repository.EventRepository;
 import org.springframework.stereotype.Service;
@@ -11,10 +12,10 @@ import java.util.stream.Collectors;
 @Service
 public class EventAnalyserAiService {
 
-    private final ChatLanguageModel chatLanguageModel;
+    private final OllamaChatModel chatLanguageModel;
     private final EventRepository eventRepository;
 
-    public EventAnalyserAiService( ChatLanguageModel chatLanguageModel, EventRepository eventRepository) {
+    public EventAnalyserAiService( OllamaChatModel chatLanguageModel, EventRepository eventRepository) {
         this.chatLanguageModel = chatLanguageModel;
         this.eventRepository = eventRepository;
     }

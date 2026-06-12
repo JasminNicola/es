@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/ai")
-public class AiController {
+public class AiControllerApi {
 
     private final EventAnalyserAiService aiService;
 
-    public AiController(EventAnalyserAiService aiService) {
+    public AiControllerApi(EventAnalyserAiService aiService) {
         this.aiService = aiService;
     }
 

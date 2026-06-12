@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2d8ec949-5781-490c-923d-188e04927748" name="Changes" comment="gitignor">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/AIConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/AiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/AiControllerApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/EventAnalyserAiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/EventAnalyserAiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="TypeScript File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="dev" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="backend_AI-einstellungen-versuch" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="3Ei6FL2vWQMNwrRZhD3BeR4z7TF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "HTTP Request.User | #1.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.Main.executor": "Run",
+    "git-widget-placeholder": "olama-test",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jasmi/Desktop/examBsp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "ts.external.directory.path": "C:\\Users\\jasmi\\Desktop\\es\\frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.repository" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jasmi\Desktop\es\frontend\src\app\dashboard\servic" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.service.outputDto" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Main">
+    <configuration name="User | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/resources/User.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="EventService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="HTTP Request.User | #1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2d8ec949-5781-490c-923d-188e04927748" name="Changes" comment="" />
+      <created>1780648937951</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1780648937951</updated>
+      <workItem from="1780648939102" duration="6905000" />
+      <workItem from="1780674060312" duration="297000" />
+      <workItem from="1780674449464" duration="7277000" />
+      <workItem from="1780681881937" duration="7481000" />
+      <workItem from="1780821873703" duration="24797000" />
+      <workItem from="1780904310399" duration="1271000" />
+      <workItem from="1780905643430" duration="33380000" />
+      <workItem from="1781100317847" duration="1325000" />
+      <workItem from="1781101670513" duration="3269000" />
+    </task>
+    <task id="LOCAL-00001" summary="Projekt setup">
+      <option name="closed" value="true" />
+      <created>1780649206832</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1780649206832</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Info über falsch oder richtige anmeldung kommt jetzt in fe an">
+      <option name="closed" value="true" />
+      <created>1780661798196</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1780661798196</updated>
+    </task>
+    <task id="LOCAL-00003" summary="sql db geändert, und application.properties eingetragen das die skripte erst zum schluss ausgeführt werden">
+      <option name="closed" value="true" />
+      <created>1780676059460</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1780676059460</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Testformular für Eventrequest mit be verbunden,&#10;weitere Klassen/Dtos angelegt">
+      <option name="closed" value="true" />
+      <created>1780681011116</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1780681011116</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ids hinzugefügt">
+      <option name="closed" value="true" />
+      <created>1780681708846</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1780681708846</updated>
+    </task>
+    <task id="LOCAL-00006" summary="neue EventRequest kann jetzt in die DB eingetragen werden, muss aber nochmal genau definiert werden was da noch rein soll und mit dem Kunden verbunden werden">
+      <option name="closed" value="true" />
+      <created>1780686107804</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1780686107804</updated>
+    </task>
+    <task id="LOCAL-00007" summary="provisorischer Logout und speicherung ob User angemeldet ist">
+      <option name="closed" value="true" />
+      <created>1780688589478</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1780688589478</updated>
+    </task>
+    <task id="LOCAL-00008" summary="UserId wird jetzt im Eventrequest gespeichert">
+      <option name="closed" value="true" />
+      <created>1780689135084</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1780689135084</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Vorhande Events werden dem User in einer Tabelle angezeigt, erstmal dur die Fake Events aus dem FE, BE verbindung fehlt noch">
+      <option name="closed" value="true" />
+      <created>1780845331128</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1780845331128</updated>
+    </task>
+    <task id="LOCAL-00010" summary="angemeldete User ( a &amp; testUser) können Events aus der DB und neu hinzugefügte events können mit dem button Events lasen angezeigt lasse">
+      <option name="closed" value="true" />
+      <created>1780922796086</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1780922796086</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Historische Events/ Teams angelegt&#10;&#10;Hotels und API AIControler/Service zum testen des Olama models">
+      <option name="closed" value="true" />
+      <created>1781000318331</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1781000318331</updated>
+    </task>
+    <task id="LOCAL-00012" summary="HistoricalEvent.java und EventRequest.java als Event.java  und zugehöriges Serviec und Repositorys zusammengelegt :)">
+      <option name="closed" value="true" />
+      <created>1781005041952</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1781005041952</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Projekt setup" />
+    <MESSAGE value="Info über falsch oder richtige anmeldung kommt jetzt in fe an" />
+    <MESSAGE value="sql db geändert, und application.properties eingetragen das die skripte erst zum schluss ausgeführt werden" />
+    <MESSAGE value="Testformular für Eventrequest mit be verbunden,&#10;weitere Klassen/Dtos angelegt" />
+    <MESSAGE value="ids hinzugefügt" />
+    <MESSAGE value="neue EventRequest kann jetzt in die DB eingetragen werden, muss aber nochmal genau definiert werden was da noch rein soll und mit dem Kunden verbunden werden" />
+    <MESSAGE value="provisorischer Logout und speicherung ob User angemeldet ist" />
+    <MESSAGE value="UserId wird jetzt im Eventrequest gespeichert" />
+    <MESSAGE value="Vorhande Events werden dem User in einer Tabelle angezeigt, erstmal dur die Fake Events aus dem FE, BE verbindung fehlt noch" />
+    <MESSAGE value="angemeldete User ( a &amp; testUser) können Events aus der DB und neu hinzugefügte events können mit dem button Events lasen angezeigt lasse" />
+    <MESSAGE value="Historische Events/ Teams angelegt&#10;&#10;Hotels und API AIControler/Service zum testen des Olama models" />
+    <MESSAGE value="HistoricalEvent.java und EventRequest.java als Event.java  und zugehöriges Serviec und Repositorys zusammengelegt :)" />
+    <MESSAGE value="gitignor" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignor" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/src/app/login/login.component.ts</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/src/app/dashboard/models/eventItem.ts</url>
+          <line>17</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
