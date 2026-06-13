@@ -17,6 +17,7 @@ target/
 /misc.xml
 /uiDesigner.xml
 /vcs.xml
+*.xml
 
 ### Eclipse ###
 .apt_generated
