@@ -3,6 +3,8 @@ package org.example.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 @Entity
 @Table(name = "event")
@@ -23,7 +25,7 @@ public class Event {
 
     private String name;
     private String description;
-    private String date;
+    private LocalDate date;
     private Integer participants;
     private String location;
     private Boolean   internationalGuests;
@@ -36,7 +38,7 @@ public class Event {
     private String feedback; // Feedback zum Event, z.B. aus Umfragen oder Berichten/ //TODO erst wenn das Event abgeschlossen ist
     public Event() {
     }
-    public Event(String name, String description, String date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
+    public Event(String name, String description, LocalDate date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
         this.name = name;
         this.description = description;
         this.date = date;
@@ -49,7 +51,7 @@ public class Event {
         this.status = status;
     }
 
-    public void createNewEventRequest(String name, String description, String date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes,EventStatus status) {
+    public void createNewEventRequest(String name, String description, LocalDate date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes,EventStatus status) {
         this.name = name;
         this.description = description;
         this.date = date;

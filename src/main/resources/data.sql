@@ -55,7 +55,7 @@ VALUES
 
 
 
-/*Hotels einfügen*/
+/*Hotels einfügen
 
 INSERT INTO HOTEL_SIMULATIONS  ( AVAILABLE_ROOMS,NUMBER_OF_ROOMS, PRICE_PER_NIGHT, CITY, HOTEL_NAME) values
                                      (8, 10, 150, 'Berlin', 'Hotel Berlin Central'),
@@ -63,3 +63,43 @@ INSERT INTO HOTEL_SIMULATIONS  ( AVAILABLE_ROOMS,NUMBER_OF_ROOMS, PRICE_PER_NIGH
                                         (14, 15, 100, 'Munich', 'Munich City Hotel'),
                                         (3, 8, 200, 'Cologne', 'Cologne Luxury Suites'),
                                         (7, 12, 80, 'Bremen', 'Bremen Budget Inn');
+
+*/
+INSERT INTO hotel_simulations (hotel_name, city, price_per_night) VALUES
+                                                                          ( 'Hotel Prinz Heinrich',     'Darmstadt', 129.00),
+                                                                          ( 'Welcome Hotel Darmstadt',  'Darmstadt',  98.00),
+                                                                          ( 'Maritim Hotel Darmstadt',  'Darmstadt', 155.00),
+                                                                          ( 'Hotel Bockshaut',          'Darmstadt',  85.00),
+                                                                          ( 'Leonardo Hotel Darmstadt', 'Darmstadt', 112.00);
+
+-- TAG 1: alles frei
+INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, booked_rooms) VALUES
+                                                                                                (1, '2025-08-01', 700, 0),
+                                                                                                (2, '2025-08-01', 500, 0),
+                                                                                                (3, '2025-08-01', 800, 0),
+                                                                                                (4, '2025-08-01', 400, 0),
+                                                                                                (5, '2025-08-01', 600, 0);
+
+-- TAG 2: alles frei
+INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, booked_rooms) VALUES
+                                                                                                (1, '2025-08-02', 700, 0),
+                                                                                                (2, '2025-08-02', 500, 0),
+                                                                                                (3, '2025-08-02', 800, 0),
+                                                                                                (4, '2025-08-02', 400, 0),
+                                                                                                (5, '2025-08-02', 600, 0);
+
+-- TAG 3: alle ausgebucht
+INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, booked_rooms) VALUES
+                                                                                                (1, '2025-08-03',   0, 700),
+                                                                                                (2, '2025-08-03',   0, 500),
+                                                                                                (3, '2025-08-03',   0, 800),
+                                                                                                (4, '2025-08-03',   0, 400),
+                                                                                                (5, '2025-08-03',   0, 600);
+
+-- TAG 4: nur 100 freie Zimmer gesamt
+INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, booked_rooms) VALUES
+                                                                                                (1, '2025-08-04',   0, 700),
+                                                                                                (2, '2025-08-04',   0, 500),
+                                                                                                (3, '2025-08-04',  60, 740),
+                                                                                                (4, '2025-08-04',   0, 400),
+                                                                                                (5, '2025-08-04',  40, 560);

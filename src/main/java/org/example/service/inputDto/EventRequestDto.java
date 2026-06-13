@@ -11,7 +11,7 @@ public class EventRequestDto {
     private Long id;
     private String name;
     private String description;
-    private String date; //Todo LocalDate
+    private LocalDate date; //Todo LocalDate
     private Integer participants;
     private String location;
     private Boolean internationalGuests;
@@ -28,7 +28,7 @@ public class EventRequestDto {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.date = date != null ? date.toString() : null;
+        this.date = date != null ? date : null;
         this.participants = participants;
         this.location = location;
         this.internationalGuests = internationalGuests;

@@ -3,6 +3,9 @@ package org.example.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "hotel_simulations")
@@ -12,8 +15,9 @@ public class HotelSimulations {
     private Long id;
         private String hotelName;
         private String city;
-        private Integer numberOfRooms;
-        private Integer availableRooms;
+
+    @OneToMany(mappedBy = "hotelSimulation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<HotelAvailibility> availabilities = new ArrayList<>();
         private Double pricePerNight;
 
 
@@ -23,8 +27,7 @@ public class HotelSimulations {
         public HotelSimulations(String hotelName, String city, Integer numberOfRooms,Integer availableRooms, Double pricePerNight) {
             this.hotelName = hotelName;
             this.city = city;
-            this.numberOfRooms = numberOfRooms;
-            this.availableRooms = availableRooms;
+
             this.pricePerNight = pricePerNight;
 
         }

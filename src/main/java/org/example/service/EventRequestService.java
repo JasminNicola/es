@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.controller.ChatControllerApi;
 import org.example.model.Event;
 import org.example.model.EventStatus;
 import org.example.model.EventType;
@@ -10,6 +11,7 @@ import org.example.service.outputDto.EventRequestDtoOutput;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,20 +20,33 @@ public class EventRequestService {
 
     private final EventRepository eventRepository;
     private final UserService userService;
+    private final OllamaService olamaService;
 
-    public EventRequestService(EventRepository eventRepository, UserService userService) {
+
+    public EventRequestService(EventRepository eventRepository, UserService userService, OllamaService olamaService) {
+         this.olamaService = olamaService;
         this.eventRepository = eventRepository;
         this.userService = userService;
+
     }
 
-    public void createEventRequest(String name, String description, String date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
+    public void createEventRequest(String name, String description, LocalDate date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
         Event event = new Event(name, description, date, participants, location, internationalGuests, eventType, catering, specialNotes, status);
         UserEmployee owner= this.userService.getLoggedInUserId();
         if (owner != null) {
             event.setOwner(owner);
         }
         this.eventRepository.save(event);
-        //TODO Save Eventrequest to User
+
+        if (internationalGuests) {
+            //TODO AI prüft ob ausreichend  verfügbar sind bei internationalen Guesten, idealer weise alle participants in einem Hotel
+            String response = olamaService.checkForAvailibilHotels(date, participants);
+            System.out.println("Ollama response: " + response);
+        }
+
+
+
+
     }
 
 
