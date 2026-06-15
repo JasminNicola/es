@@ -1,0 +1,56 @@
+<p>dashboard works!</p>
+<button (click)="goToEventRequest()" )>Zum EventItem Request</button>
+
+<div >
+  Hallo
+</div>
+
+<button (click)="getUsersEvents()">Events laden</button>
+
+
+<div class="filter-bereich">
+  <input type="text" placeholder="Nach Event suchen..." (input)="filtereEvents($event)">
+</div>
+
+< Container für die vertikale Liste >
+<div class="event-liste">
+  <div class="event-zeile header-zeile">
+    <span class="spalten-titel">Id</span>
+    <span class="spalten-titel">Eventname</span>
+    <span class="spalten-titel">Date</span>
+    <span class="spalten-titel">Participants</span>
+    <span class="spalten-titel">Location</span>
+    <span class="spalten-titel">International</span>
+    <span class="spalten-titel">EventType</span>
+    <span class="spalten-titel">Catering</span>
+    <span class="spalten-titel">Description</span>
+    <span class="spalten-titel">Special Notes</span>
+    <span class="spalten-titel">Status</span>
+    <span class="spalten-titel aktionen-titel">Action</span>
+  </div>
+
+  <ng-template #noEvents>
+    <p>No events available.</p>
+  </ng-template>
+
+  <div *ngFor="let event of eventsItems" >
+    <div class="event-info">
+      <span class="event-id">{{ event.id }}</span>
+      <span class="event-titel">{{ event.name }}</span>
+      <span class="event-datum">{{ event.date | date:'dd.MM.yyyy' }}</span>
+      <span class="event-teilnehmer">{{ event.participants }}</span>
+      <span class="location">{{ event.location }}</span>
+      <span class="event-international">{{ event.internationalGuests ? 'International' : 'National' }}</span>
+      <span class="event-eventType">{{ event.eventType }}</span>
+      <span class="event-catering">{{ event.catering }}</span>
+      <span class="event-beschreibung">{{ event.description }}</span>
+      <span class="event-specialNotes">{{ event.specialNotes }}</span>
+      <span class="event-status">{{ event.status }}</span>
+    </div>
+
+    <div class="event-aktionen">
+      <button (click)="bearbeiteEvent(event.id)" class="btn-bearbeiten">Bearbeiten</button>
+    </div>
+
+  </div>
+</div>

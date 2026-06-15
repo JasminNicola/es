@@ -1,0 +1,123 @@
+<p>event-request works!</p>
+<button (click)="goToLogin()" )>Zum EventItem Request</button>
+
+ <!--Todo  *ngIf="authService.isLoggedIn() -->
+<div class="page-wrapper">
+  <div class="form-card">
+
+    <div class="form-header">
+      <div class="header-accent"></div>
+      <h1>Eventanfrage</h1>
+      <p class="subtitle">Planen Sie Ihr nächstes unvergessliches Event</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #eventForm="ngForm" class="event-form">
+
+      <!-- Erfolgs- / Fehlermeldung -->
+      <div *ngIf="successMessage" class="alert alert-success">✓ {{ successMessage }}</div>
+
+      <div *ngIf="errorMessage"   class="alert alert-error">✗ {{ errorMessage }}</div>
+
+      <!-- ── Abschnitt 1: Grundinfos ── -->
+      <section class="form-section">
+        <h2 class="section-title"><span class="section-num">01</span> Grundinformationen</h2>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="name">Eventname <span class="required">*</span></label>
+            <input id="name" type="text" [(ngModel)]="eventRequest.name"
+                   name="name" required placeholder="z.B. Jahrestagung 2025" />
+          </div>
+
+          <div class="field">
+            <label for="date">Datum <span class="required">*</span></label>
+            <input id="date" type="date" [(ngModel)]="eventRequest.date"
+                   name="date" required />
+          </div>
+
+          <div class="field">
+            <label for="location">Ort <span class="required">*</span></label>
+            <input id="location" type="text" [(ngModel)]="eventRequest.location"
+                   name="location" required placeholder="z.B. Berlin, Messegelände" />
+          </div>
+
+          <div class="field">
+            <label for="participants">Teilnehmerzahl <span class="required">*</span></label>
+            <input id="participants" type="number" [(ngModel)]="eventRequest.participants"
+                   name="participants" required min="1" placeholder="z.B. 150" />
+          </div>
+        </div>
+
+        <div class="field full-width">
+          <label for="description">Beschreibung</label>
+          <textarea id="description" [(ngModel)]="eventRequest.description"
+                    name="description" rows="3"
+                    placeholder="Kurze Beschreibung des Events..."></textarea>
+        </div>
+      </section>
+
+      <!-- ── Abschnitt 2: Eventtyp ── -->
+      <section class="form-section">
+        <h2 class="section-title"><span class="section-num">02</span> Eventtyp & Dauer</h2>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="eventType">Eventtyp <span class="required">*</span></label>
+            <select id="eventType" [(ngModel)]="eventRequest.eventType"
+                    name="eventType" required>
+              <option value="" disabled>Bitte wählen...</option>
+              <option value="HALF_DAY">Halbtag (½ Tag)</option>
+              <option value="FULL_DAY">Ganztag (1 Tag)</option>
+              <option value="MULTI_DAY">Mehrtägig</option>
+            </select>
+          </div>
+
+          <div class="field checkbox-field">
+            <label class="checkbox-label">
+              <input type="checkbox" [(ngModel)]="eventRequest.internationalGuests"
+                     name="internationalGuests" />
+              <span class="checkbox-box"></span>
+              <span class="checkbox-text">Internationale Gäste erwartet</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Abschnitt 3: Catering ── -->
+      <section class="form-section">
+        <h2 class="section-title"><span class="section-num">03</span> Catering</h2>
+
+        <div class="catering-options">
+          <label class="radio-card" *ngFor="let option of cateringOptions">
+            <input type="radio" [(ngModel)]="eventRequest.catering"
+                   name="catering" [value]="option.value" />
+            <span class="radio-box"></span>
+            <span class="radio-icon">{{ option.icon }}</span>
+            <span class="radio-label">{{ option.label }}</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- ── Abschnitt 4: Anmerkungen ── -->
+      <section class="form-section">
+        <h2 class="section-title"><span class="section-num">04</span> Besondere Anmerkungen</h2>
+
+        <div class="field full-width">
+          <textarea [(ngModel)]="eventRequest.specialNotes" name="specialNotes"
+                    rows="4"
+                    placeholder="Besondere Wünsche, Anforderungen oder Informationen..."></textarea>
+        </div>
+      </section>
+
+      <!-- ── Absenden ── -->
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="onReset()">Zurücksetzen</button>
+        <button type="submit" class="btn-primary" [disabled]="!eventForm.valid || isLoading">
+          <span *ngIf="!isLoading">Anfrage senden →</span>
+          <span *ngIf="isLoading" class="spinner"></span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

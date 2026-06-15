@@ -1,10 +1,14 @@
-<!-- WICHTIG: Das Router-Outlet muss darunter stehen, damit die Login-Seite hier geladen wird -->
-<!--router-outlet></router-outlet>
-< app.component.html -->
-<h1>{{title}}</h1>
-<h1>Willkommen zur Eventbuchung </h1>
-<p>app.component</p>
-<p>_________________</p>
+<app-header [title]="title"></app-header>
 
 
-<router-outlet></router-outlet>
+<div class="layout">
+  <app-sidebar></app-sidebar>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <app-sidebar-right
+    [actionLabel]="rightButtonLabel"
+    [action]="rightButtonAction">
+  </app-sidebar-right>
+</div>

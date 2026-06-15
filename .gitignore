@@ -1,3 +1,5 @@
+.gitignore
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -11,6 +13,11 @@ target/
 *.iws
 *.iml
 *.ipr
+
+/misc.xml
+/uiDesigner.xml
+/vcs.xml
+*.xml
 
 ### Eclipse ###
 .apt_generated

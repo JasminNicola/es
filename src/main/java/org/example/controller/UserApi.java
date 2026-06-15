@@ -1,13 +1,14 @@
 package org.example.controller;
 
-import org.example.model.User;
-import org.example.service.UserService;
-import org.example.service.inputDto.LoginRequest;
+import org.example.model.UserEmployee;
 import org.example.service.outputDto.UserDtoOutput;
+import org.example.service.UserService;
+import org.example.service.inputDto.LoginRequestDto;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.Map;
 
 
 @RestController
@@ -19,42 +20,21 @@ public class UserApi {
         this.userService = userService;
     }
 
-//    @PostMapping("/login")
-//    public ResponseEntity<String> login(@RequestParam LoginRequest loginrequest) {
-//        System.out.println("im Backand angekommen"+loginrequest.getUsername());
-//        Optional<User> userOptional = userService.login(loginrequest);
-//        if (userOptional.isPresent()) {
-//            User user = userOptional.get();
-//             String name = user.getUsername();
-//            return ResponseEntity.ok("Hi {}Login successful");
-//            }
-//        return ResponseEntity.status(404).body("Username or Password not found");
-//    }
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
-
-        System.out.println("Username: " + loginRequest.getUsername());
-        System.out.println("Password: " + loginRequest.getPassword());
-
-
-
-        User userOptional = userService.login(loginRequest);
-            if (userOptional != null) {
-                System.out.println("Login successful for user: " + userOptional.getUsername());
-
-                return ResponseEntity.ok(
-                        "Hi " + userOptional.getUsername() + " Login successful");
-
+    public ResponseEntity<?> login(@RequestBody LoginRequestDto loginRequestDto) {
+        UserDtoOutput userEmployeeOptional = userService.login(loginRequestDto);
+            if (userEmployeeOptional != null) {
+                return ResponseEntity.ok(Map.of("message", "Hi " + userEmployeeOptional.getUsername() + " Login successful"));
             }
-//        if (userOptional.isPresent()) {
-//            return ResponseEntity.ok(
-//                    "Hi " + userOptional.get() + " Login successful");
-//        }
-        System.out.println("nicht gefunden");
-
         return ResponseEntity.status(404)
                 .body("Username or Password not found");
     }
+
+    @PostMapping("/logout")
+    public Boolean logout() {
+        return userService.logout();
+    }
+
 
 
 }

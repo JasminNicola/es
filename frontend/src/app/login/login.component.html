@@ -1,8 +1,7 @@
 <p>login works!</p>
 
+<div  class="login-box">
 
-<div class="login-box">
-  <h2>Anmeldung</h2>
 
   <!-- Zeigt eine Fehlermeldung, falls die Daten falsch sind -->
   <div *ngIf="errorMessage" class="error-message">
@@ -11,7 +10,7 @@
   <form (ngSubmit)="onLogin(username,password)">
     <!-- 1. Feld: Benutzername -->
     <div class="input-group">
-      <label for="username">Benutzername:</label>
+      <label for="username">Username:</label>
       <input
         type="text"
         id="username"
@@ -22,7 +21,7 @@
 
     <!-- 2. Feld: Passwort -->
     <div class="input-group">
-      <label for="password">Passwort:</label>
+      <label for="password">Password:</label>
       <input
         type="password"
         id="password"
@@ -32,9 +31,13 @@
     </div>
 
     <!-- Absendebutton -->
-    <button type="submit">Einloggen</button>
+    <button type="submit">Login</button>
   </form>
-  <p>??{{response}}</p>
+  <p>{{response}}</p>
+  <button (click)="goToDashboard()" )>Go to Dashboard</button>
+
+  <!-- TODO Logout Button nur anzeigen, wenn der User eingeloggt ist -->
+
+
+
 </div>
-
-

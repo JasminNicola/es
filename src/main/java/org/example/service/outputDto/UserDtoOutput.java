@@ -1,5 +1,8 @@
 package org.example.service.outputDto;
 
+import lombok.Data;
+
+@Data
 public class UserDtoOutput {
     private Long id;
     private String username;

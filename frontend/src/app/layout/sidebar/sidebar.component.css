@@ -1,0 +1,27 @@
+.sidebar{
+  width: 120px;
+  background-color:var(--sidebar_light_green);
+  padding:1rem;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  height:100vh;
+}
+.doesNothing{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  border: none;
+  border-radius:8px;
+  font-size:1rem;
+  cursor: pointer;
+  color: var(--merck_logo_blau);
+  background-color:white;
+  transition:0.2s ease;
+}
+
+.doesNothing:hover{
+  transform: translateX(4px);
+  background-color: var(--titel_header_yellow);
+}
