@@ -32,4 +32,8 @@ public interface EventRepository extends JpaRepository<Event, Long> {
         """)
         List<EventRequestDtoOutput> getEventRequestByOwnerId(@Param("ownerId") Long ownerId);
 
+
+        @Query(" select e from Event e where e.feedback is not null")
+        List<Event> getEventWithFeedback();
+
 }

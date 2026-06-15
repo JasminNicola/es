@@ -1,37 +1,67 @@
 package org.example.service;
 
-import org.example.model.Event;
-import org.example.model.EventStatus;
-import org.example.model.EventType;
-import org.example.model.UserEmployee;
+import org.example.controller.ChatControllerApi;
+import org.example.model.*;
 import org.example.repository.EventRepository;
+import org.example.repository.HotelAvailibilityRepository;
 import org.example.service.inputDto.EventRequestDto;
 import org.example.service.outputDto.EventRequestDtoOutput;
+import org.example.service.outputDto.HotelAvailibilityInfoDto;
+import org.example.service.outputDto.HotelInfoDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class EventRequestService {
 
     private final EventRepository eventRepository;
+    private final HotelAvailibilityRepository hotelAvailibilityRepository;
     private final UserService userService;
+    private final OllamaService olamaService;
 
-    public EventRequestService(EventRepository eventRepository, UserService userService) {
+
+    public EventRequestService(EventRepository eventRepository, HotelAvailibilityRepository hotelAvailibilityRepository, UserService userService, OllamaService olamaService) {
+        this.hotelAvailibilityRepository = hotelAvailibilityRepository;
+        this.olamaService = olamaService;
         this.eventRepository = eventRepository;
         this.userService = userService;
+
     }
 
-    public void createEventRequest(String name, String description, String date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
+    public void createEventRequest(String name, String description, LocalDate date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
         Event event = new Event(name, description, date, participants, location, internationalGuests, eventType, catering, specialNotes, status);
         UserEmployee owner= this.userService.getLoggedInUserId();
         if (owner != null) {
             event.setOwner(owner);
         }
         this.eventRepository.save(event);
-        //TODO Save Eventrequest to User
+
+        if (internationalGuests) {
+            createPromtForAIAnalysis(date, participants);
+        }
+    }
+
+    private void createPromtForAIAnalysis(LocalDate date, Integer participants) {
+        //TODO AI prüft ob ausreichend  verfügbar sind bei internationalen Guesten, idealer weise alle participants in einem Hotel
+
+        //TODO Liste der Hotelsmit verfügbaren Zimmern zurückgeben // Prototyp anfrage H2 Database später HotelApi
+        List<Event> events = this.eventRepository.getEventWithFeedback();//fürs feedback
+
+
+        List<HotelInfoDto> hotelSimulations = this.hotelAvailibilityRepository.findAllHotelSimulations();
+        for (HotelInfoDto h: hotelSimulations) {
+            h.setAvailabilities(hotelAvailibilityRepository.getAvailibilityByHotelId(h.getId()));
+        }
+
+        String responseHotelAvailibility = olamaService.checkForAvailibilHotels(date, participants,hotelSimulations, events);
+        // TODO von hier muss mit der info weiter gearbeitet werden
+
     }
 
 

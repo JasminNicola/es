@@ -45,11 +45,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Spring AI Ollama für Ihr lokales KI-Modell -->
-        <!-- dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
-        </dependency-->
 
         <!-- Test-Unterstützung (wird automatisch generiert) -->
         <dependency>
@@ -58,15 +53,29 @@
             <version>3.3.5</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.46</version>
             <scope>provided</scope>
         </dependency>
+        <!-- LangChain4j Ollama -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-ollama-spring-boot-starter</artifactId>
+            <version>0.36.2</version>
+        </dependency>
+
+        <!-- LangChain4j Core (für @AiService, @SystemMessage etc.) -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-spring-boot-starter</artifactId>
+            <version>0.36.2</version>
+        </dependency>
 
         <!-- LangChain4j für die Ollama-Anbindung -->
-        <dependency>
+        <!--dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-spring-boot-starter</artifactId>
             <version>0.36.0</version>
@@ -75,10 +84,31 @@
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-ollama-spring-boot-starter</artifactId>
             <version>0.36.0</version>
-        </dependency>
+        </dependency-->
+
+
+        <!-- Spring AI mit Ollama -->
+        <!--dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+
+
+        </dependency-->
+
 
     </dependencies>
 
+    <!--dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>1.0.0-M6</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement-->
 
 
 </project>

@@ -49,17 +49,48 @@ INSERT INTO EVENT (
 VALUES
     (0, TRUE, 150, 4, 1, TRUE, '2026-12-01', 'End of Year Celebration', 'Berlin', 'Year-End Party', 'Great event with excellent organization.', 'Feedback was overwhelmingly positive, with many attendees praising the venue and catering.', 1),
     (1, FALSE, 200, 4, 1, TRUE, '2026-12-15', 'Annual Review Meeting', 'Munich', 'Review 2026', 'Participants appreciated the detailed insights and planning for the next year.', 'The meeting was well-received, with constructive feedback on improving the presentation format.', 2),
-    (2, TRUE, 50, 4, 1, FALSE, '2026-12-20', 'Technical Training Workshop', 'Hamburg', 'Tech Training', 'Attendees found the workshop informative and engaging.', 'Feedback highlighted the need for more hands-on exercises in future sessions.', 3);
+    (2, TRUE, 50, 4, 1, FALSE, '2026-12-20', 'Technical Training Workshop', 'Hamburg', 'Tech Training', 'Attendees found the workshop informative and engaging.', 'Feedback highlighted the need for more hands-on exercises in future sessions. Pleas don not book DararmstadtIn ever again', 3);
 
 
 
 
 
-/*Hotels einfügen*/
+--Hotels einfügen
+INSERT INTO hotel_simulations (hotel_name, city, price_per_night) VALUES
+                                                                          ( 'Hotel Prinz Heinrich',     'Darmstadt', 129.00),
+                                                                          ( 'Welcome Hotel Darmstadt',  'Darmstadt',  98.00),
+                                                                          ( 'Maritim Hotel Darmstadt',  'Darmstadt', 155.00),
+                                                                          ( 'DararmstadtIn',          'Darmstadt',  85.00),
+                                                                          ( 'Leonardo Hotel Darmstadt', 'Darmstadt', 112.00);
 
-INSERT INTO HOTEL_SIMULATIONS  ( AVAILABLE_ROOMS,NUMBER_OF_ROOMS, PRICE_PER_NIGHT, CITY, HOTEL_NAME) values
-                                     (8, 10, 150, 'Berlin', 'Hotel Berlin Central'),
-                                        (20, 20, 120, 'Hamburg', 'Hamburg Grand Hotel'),
-                                        (14, 15, 100, 'Munich', 'Munich City Hotel'),
-                                        (3, 8, 200, 'Cologne', 'Cologne Luxury Suites'),
-                                        (7, 12, 80, 'Bremen', 'Bremen Budget Inn');
+-- TAG 1: alles frei
+INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, booked_rooms) VALUES
+                                                                                                (1, '2026-08-01', 700, 0),
+                                                                                                (2, '2026-08-01', 500, 0),
+                                                                                                (3, '2026-08-01', 800, 0),
+                                                                                                (4, '2026-08-01', 400, 0),
+                                                                                                (5, '2026-08-01', 600, 0);
+
+-- TAG 2: alles frei
+INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, booked_rooms) VALUES
+                                                                                                (1, '2026-08-02', 700, 0),
+                                                                                                (2, '2026-08-02', 500, 0),
+                                                                                                (3, '2026-08-02', 800, 0),
+                                                                                                (4, '2026-08-02', 400, 0),
+                                                                                                (5, '2026-08-02', 600, 0);
+
+-- TAG 3: alle ausgebucht
+INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, booked_rooms) VALUES
+                                                                                                (1, '2026-08-03',   0, 700),
+                                                                                                (2, '2026-08-03',   0, 500),
+                                                                                                (3, '2026-08-03',   0, 800),
+                                                                                                (4, '2026-08-03',   0, 400),
+                                                                                                (5, '2026-08-03',   0, 600);
+
+-- TAG 4: nur 100 freie Zimmer gesamt
+INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, booked_rooms) VALUES
+                                                                                                (1, '2026-08-04',   0, 700),
+                                                                                                (2, '2026-08-04',   0, 500),
+                                                                                                (3, '2026-08-04',  60, 740),
+                                                                                                (4, '2026-08-04',   0, 400),
+                                                                                                (5, '2026-08-04',  40, 560);
