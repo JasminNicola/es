@@ -5,12 +5,14 @@ import { HttpClient } from '@angular/common/http';
 import {Router} from "@angular/router";
 import {AppComponent} from "../app.component";
 import {ChangeDetectorRef} from "@angular/core";
+import {SidebarRightService} from "../layout/sidebar-right/sidebar-right.service";
+import {SidebarRightComponent} from "../layout/sidebar-right/sidebar-right.component";
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, SidebarRightComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -22,7 +24,7 @@ export class LoginComponent {
   response:string='';
   loggedIn = false;
 
-  constructor(private http: HttpClient, private router: Router, private app: AppComponent, private cdr: ChangeDetectorRef) {}
+  constructor(private http: HttpClient, private router: Router, private app: AppComponent, private cdr: ChangeDetectorRef, private SidebarRight: SidebarRightService) {}
 
 onLogin(username: string, password: string) {
     this.errorMessage='';
@@ -35,10 +37,9 @@ onLogin(username: string, password: string) {
         console.log('Login successful:', response);
         this.response = response.message;
         this.loggedIn = true;
-        this.app.rightButtonLabel = 'Logout';
-        this.app.rightButtonAction = () => this.logout();
+        this.SidebarRight.set('Logout', () => this.logout());
         this.cdr.detectChanges();
-        // Handle successful login, e.g., navigate to a different page
+        this.router.navigate(['/dashboard']);
       },
       error: (error) => {
         console.error('Login failed:', error);
@@ -46,6 +47,7 @@ onLogin(username: string, password: string) {
 
       }
     });
+
   }
 
   logout() {
@@ -63,6 +65,8 @@ onLogin(username: string, password: string) {
           this.errorMessage = 'Logout failed. Please try again.';
         }
       });
+    this.SidebarRight.clear();
+
   }
 
   goToDashboard() {

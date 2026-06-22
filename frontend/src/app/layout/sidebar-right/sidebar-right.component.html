@@ -1,3 +1,5 @@
 <div class="sidebar-right">
-  <button *ngIf="action" (click)="action()">{{actionLabel}}</button>
+  <button *ngIf="sidebarRight.label" (click)="sidebarRight.action()">
+    {{ sidebarRight.label }}
+  </button>
 </div>
