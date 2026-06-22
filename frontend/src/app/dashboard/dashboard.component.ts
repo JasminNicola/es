@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import {CommonModule} from "@angular/common";
 import {EventItem} from "./models/eventItem";
 import {HttpClient} from "@angular/common/http";
+import { SidebarRightService } from "../layout/sidebar-right/sidebar-right.service";
+
 
 
 
@@ -17,8 +19,9 @@ import {HttpClient} from "@angular/common/http";
 
 export class DashboardComponent{
 
-  constructor(private router: Router, private http: HttpClient) {
-
+  constructor(private router: Router, private http: HttpClient,private sidebarRight: SidebarRightService
+  ) {
+    this.sidebarRight.set("Logout", () => this.logout());
   }
 
 
@@ -71,6 +74,15 @@ allEvents:EventItem []= [];//this.getUsersEvents()
     }
       });
     return this.allEvents;
+  }
+  logout() {
+    this.http.post('http://localhost:8080/api/logout', {})
+      .subscribe({
+        next: () => {
+          this.sidebarRight.clear();
+          this.router.navigate(['/login']);
+        }
+      });
   }
 
 
