@@ -1,31 +1,229 @@
-/*.btn-secondary:hover { border-color: var(--muted); color: var(--text); }*/
+/* --- Grundlayout --- */
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
 
-.btn-primary {
-  padding: 10px 28px;
-  /**background: linear-gradient(135deg, var(--accent), var(--accent2));*/
-  border: none;
-  /** border-radius: var(--radius);*/
-  color: #111;
+.form-card {
+  background: white;
+  width: 900px;
+  padding: 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border: 1px solid #e5e5e5;
   font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: opacity .2s;
-  min-width: 150px;
+}
+
+/* --- Header oben --- */
+.form-header {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.header-accent {
+  width: 60px;
+  height: 6px;
+  background: var(--green_header);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.form-header h1 {
+  font-size: 1.9rem;
+  color: var(--merck_logo_blau);
+  margin: 0;
+}
+
+.subtitle {
+  color: #666;
+  margin-top: .3rem;
+  font-size: 1rem;
+}
+
+/* --- Abschnittstitel --- */
+.form-section {
+  margin-bottom: 2.5rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--merck_logo_blau);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: .6rem;
+  margin-bottom: 1.2rem;
 }
-.btn-primary:hover:not(:disabled) { opacity: .88; }
-.btn-primary:disabled { opacity: .4; cursor: not-allowed; }
 
-.spinner {
-  width: 18px; height: 18px;
-  border: 2px solid #111;
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: spin .7s linear infinite;
+.section-num {
+  background: var(--green_header);
+  color: white;
+  padding: .3rem .7rem;
+  border-radius: 6px;
+  font-size: .9rem;
+}
+
+/* --- Grid für Felder --- */
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* --- Input-Felder --- */
+.field label {
+  font-weight: 600;
+  margin-bottom: .3rem;
+  display: block;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: .7rem .9rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: .95rem;
+  transition: border-color .2s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--merck_logo_blau);
+  outline: none;
+}
+
+/* --- Checkbox --- */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  cursor: pointer;
+}
+.checkbox-label input {
+  display: none;
+}
+
+.checkbox-box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--merck_logo_blau);
+  border-radius: 4px;
   display: inline-block;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
 
+.checkbox-label input:checked + .checkbox-box {
+  background: var(--merck_logo_blau);
+  border-color: var(--merck_logo_blau);
+}
+
+/* --- Catering Radio Cards --- */
+.catering-options {
+  display: flex;
+  gap: 1rem;
+}
+
+.radio-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+  transition: all .2s;
+  position: relative;
+}
+
+.radio-card:hover {
+  border-color: var(--merck_logo_blau);
+}
+
+.radio-card input {
+  display: none;
+}
+
+.radio-card input:checked ~ .radio-box {
+  background: var(--merck_logo_blau);
+  border-color: var(--merck_logo_blau);
+}
+
+.radio-box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--merck_logo_blau);
+  border-radius: 50%;
+  margin: 0 auto .5rem;
+  display: block;
+}
+
+.radio-icon {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: .3rem;
+}
+
+.radio-label {
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+/* --- Buttons unten --- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-secondary {
+  background: #eee;
+  padding: .7rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--green_header);
+  color: white;
+  padding: .7rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 160px;
+}
+
+.btn-primary:hover {
+  background: #0b7d4d;
+}
+
+/* --- Alerts --- */
+.alert {
+  padding: .8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.alert-success {
+  background: #e6f7e9;
+  color: #1b7a2f;
+}
+
+.alert-error {
+  background: #fdeaea;
+  color: #b30000;
+}

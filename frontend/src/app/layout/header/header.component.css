@@ -1,5 +1,5 @@
 .header{
   background-color:var(--green_header);
   padding:1rem;
-  color:whitesmoke;
+  color:var(--titel_header_yellow);
 }
