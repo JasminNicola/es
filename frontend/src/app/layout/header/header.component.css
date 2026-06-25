@@ -1,5 +1,14 @@
-.header{
-  background-color:var(--green_header);
-  padding:1rem;
-  color:var(--titel_header_yellow);
+.header {
+  background-color: var(--green_header);
+  padding: 1rem;
+  color: var(--titel_header_yellow);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.logo {
+  height: 100px;   /* ← HIER stellst du die Größe ein */
+  width: auto;    /* verhindert Verzerrung */
 }
