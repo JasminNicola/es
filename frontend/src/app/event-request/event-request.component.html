@@ -10,6 +10,26 @@
     </div>
 
     <form #questionForm="ngForm" (ngSubmit)="onSubmit()" class="event-form">
+      <!-- 00 – Eventdetails -->
+      <section class="form-section">
+        <h2 class="section-title"><span class="section-num">00</span> Basisinformationen zum Event</h2>
+
+        <div class="input-grid">
+
+          <div class="field">
+            <label for="name">Eventname <span class="required">*</span></label>
+            <input id="name" type="text" [(ngModel)]="eventRequest.name"
+                   name="name" required placeholder="z.B. Jahrestagung 2025" />
+          </div>
+
+          <div class="field">
+            <label for="date">Datum <span class="required">*</span></label>
+            <input id="date" type="date" [(ngModel)]="eventRequest.date"
+                   name="date" required />
+          </div>
+
+        </div>
+      </section>
 
       <!-- 01 – Was möchten Sie organisieren? -->
       <section class="form-section">

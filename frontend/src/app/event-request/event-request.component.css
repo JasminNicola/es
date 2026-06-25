@@ -159,3 +159,42 @@
 .btn-primary:hover {
   background: #00866f;
 }
+/* Grid für die drei Felder */
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Einzelnes Feld */
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-weight: 600;
+  color: #004c97;
+  margin-bottom: .4rem;
+}
+
+.field input {
+  padding: .7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: .95rem;
+  background: #fafbff;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.field input:focus {
+  border-color: #004c97;
+  box-shadow: 0 0 0 3px rgba(0,76,151,0.15);
+  outline: none;
+}
+
+.required {
+  color: #d9534f;
+  font-weight: bold;
+}

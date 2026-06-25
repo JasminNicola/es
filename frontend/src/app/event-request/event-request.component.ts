@@ -29,6 +29,12 @@ export class EventRequestComponent {
   breakouts: string = "";
   purpose: string = "";
 
+  eventRequest = {
+    name: '',
+    date: '',
+    location: ''
+  };
+
   // -----------------------------
   // ⭐ Bucket-Routen
   // -----------------------------
