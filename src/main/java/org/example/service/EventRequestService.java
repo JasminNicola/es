@@ -1,12 +1,10 @@
 package org.example.service;
 
-import org.example.controller.ChatControllerApi;
 import org.example.model.*;
 import org.example.repository.EventRepository;
 import org.example.repository.HotelAvailibilityRepository;
 import org.example.service.inputDto.EventRequestDto;
 import org.example.service.outputDto.EventRequestDtoOutput;
-import org.example.service.outputDto.HotelAvailibilityInfoDto;
 import org.example.service.outputDto.HotelInfoDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -41,25 +38,26 @@ public class EventRequestService {
             event.setOwner(owner);
         }
         this.eventRepository.save(event);
-
-        if (internationalGuests) {
-            createPromtForAIAnalysis(date, participants);
-        }
+/// todo was ist noch wichtig für eine KI prüfung
+      // immer prüfen
+            createPromtForAIAnalysis(date, participants, internationalGuests);
     }
 
-    private void createPromtForAIAnalysis(LocalDate date, Integer participants) {
+    private void createPromtForAIAnalysis(LocalDate date, Integer participants, Boolean internationalGuests) {
         //TODO AI prüft ob ausreichend  verfügbar sind bei internationalen Guesten, idealer weise alle participants in einem Hotel
 
-        //TODO Liste der Hotelsmit verfügbaren Zimmern zurückgeben // Prototyp anfrage H2 Database später HotelApi
-        List<Event> events = this.eventRepository.getEventWithFeedback();//fürs feedback
+        //feedback der events
+        List<Event> events = this.eventRepository.getEventWithFeedback();
+        List<HotelInfoDto> hotelSimulations = new ArrayList<>();
 
-
-        List<HotelInfoDto> hotelSimulations = this.hotelAvailibilityRepository.findAllHotelSimulations();
-        for (HotelInfoDto h: hotelSimulations) {
-            h.setAvailabilities(hotelAvailibilityRepository.getAvailibilityByHotelId(h.getId()));
+        if(internationalGuests==true) {
+            //TODO Liste der Hotels mit verfügbaren Zimmern zurückgeben // Prototyp anfrage H2 Database später HotelApi
+             hotelSimulations=this.hotelAvailibilityRepository.findAllHotelSimulations();
+            for (HotelInfoDto h : hotelSimulations) {
+                h.setAvailabilities(hotelAvailibilityRepository.getAvailibilityByHotelId(h.getId()));
+            }
         }
-
-        String responseHotelAvailibility = olamaService.checkForAvailibilHotels(date, participants,hotelSimulations, events);
+        String responseHotelAvailibility = olamaService.checkForAvailibilHotels(date, participants,hotelSimulations, events,internationalGuests);
         // TODO von hier muss mit der info weiter gearbeitet werden
 
     }
