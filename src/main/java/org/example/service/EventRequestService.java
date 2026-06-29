@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.model.*;
+import org.example.repository.EventLocationRepository;
 import org.example.repository.EventRepository;
 import org.example.repository.HotelAvailibilityRepository;
 import org.example.service.inputDto.EventRequestDto;
@@ -19,13 +20,15 @@ public class EventRequestService {
 
     private final EventRepository eventRepository;
     private final HotelAvailibilityRepository hotelAvailibilityRepository;
+    private final EventLocationRepository eventLocationRepository;
 
     private final UserService userService;
     private final OllamaService olamaService;
 
 
-    public EventRequestService(EventRepository eventRepository, HotelAvailibilityRepository hotelAvailibilityRepository, UserService userService, OllamaService olamaService) {
+    public EventRequestService(EventRepository eventRepository, HotelAvailibilityRepository hotelAvailibilityRepository, EventLocationRepository eventLocationRepository, UserService userService, OllamaService olamaService) {
         this.hotelAvailibilityRepository = hotelAvailibilityRepository;
+        this.eventLocationRepository = eventLocationRepository;
         this.olamaService = olamaService;
         this.eventRepository = eventRepository;
         this.userService = userService;
@@ -60,6 +63,11 @@ public class EventRequestService {
         }
         String responseHotelAvailibility = olamaService.checkForAvailibilHotels(date, participants,hotelSimulations, events,internationalGuests);
         // TODO von hier muss mit der info weiter gearbeitet werden
+
+        //Rooms
+        eventLocations=this.eventLocationRepository.findAll();
+        for (EventLocation e : eventLocations) {
+            System.out.println(e.getLocationName()+e.getAvailabilities());        }
 
     }
 
