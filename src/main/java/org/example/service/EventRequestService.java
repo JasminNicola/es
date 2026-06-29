@@ -53,6 +53,7 @@ public class EventRequestService {
         //feedback der events
         List<Event> events = this.eventRepository.getEventWithFeedback();
         List<HotelInfoDto> hotelSimulations = new ArrayList<>();
+        List<EventLocation> eventLocations = new ArrayList<>();
 
         if(internationalGuests==true) {
             //TODO Liste der Hotels mit verfügbaren Zimmern zurückgeben // Prototyp anfrage H2 Database später HotelApi
