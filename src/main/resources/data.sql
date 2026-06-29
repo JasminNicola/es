@@ -63,6 +63,9 @@ INSERT INTO hotel_simulations (hotel_name, city, price_per_night) VALUES
                                                                           ( 'DararmstadtIn',          'Darmstadt',  85.00),
                                                                           ( 'Leonardo Hotel Darmstadt', 'Darmstadt', 112.00);
 
+
+
+
 -- TAG 1: alles frei
 INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, booked_rooms) VALUES
                                                                                                 (1, '2026-08-01', 700, 0),
@@ -94,3 +97,28 @@ INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, bo
                                                                                                 (3, '2026-08-04',  60, 740),
                                                                                                 (4, '2026-08-04',   0, 400),
                                                                                                 (5, '2026-08-04',  40, 560);
+
+
+
+INSERT INTO Event_locations (location_name) values ('Auditorium'),
+                                                  ('Atrium'),
+                                                  ('Sprthalle'),
+                                                  ('Studio');
+
+insert into LOCATION_AVAILABILITIES (DATE,ROOM_AVAILABLE,EVENT_LOCATION_ID) values
+                                                                                ('2026-08-01',true,1),
+                                                                                ('2026-08-01',true,2),
+                                                                                ('2026-08-01',true,3),
+                                                                                ('2026-08-01',true,4),
+                                                                                ('2026-08-02',true,1),
+                                                                                ('2026-08-02',true,2),
+                                                                                ('2026-08-02',true,3),
+                                                                                ('2026-08-02',true,4),
+                                                                                ('2026-08-03',false,1),
+                                                                                ('2026-08-03',false,2),
+                                                                                ('2026-08-03',false,3),
+                                                                                ('2026-08-03',false,4),
+                                                                                ('2026-08-04',false,1),
+                                                                                ('2026-08-04',false,2),
+                                                                                ('2026-08-04',true,3),
+                                                                                ('2026-08-04',false,4);

@@ -19,6 +19,7 @@ public class EventRequestService {
 
     private final EventRepository eventRepository;
     private final HotelAvailibilityRepository hotelAvailibilityRepository;
+
     private final UserService userService;
     private final OllamaService olamaService;
 
@@ -45,7 +46,7 @@ public class EventRequestService {
 
     private void createPromtForAIAnalysis(LocalDate date, Integer participants, Boolean internationalGuests) {
         //TODO AI prüft ob ausreichend  verfügbar sind bei internationalen Guesten, idealer weise alle participants in einem Hotel
-
+        System.out.println("createPromtForAIAnalysis called with date: " + date + ", participants: " + participants + ", internationalGuests: " + internationalGuests);
         //feedback der events
         List<Event> events = this.eventRepository.getEventWithFeedback();
         List<HotelInfoDto> hotelSimulations = new ArrayList<>();
