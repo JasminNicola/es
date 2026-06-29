@@ -23,7 +23,7 @@ public class EventRequestApi {
     @PostMapping("/events/create-request")
     public ResponseEntity<?> createEvent(@RequestBody EventRequestDto request) {
 
-        this.eventRequestService.createEventRequest(
+        String aiResponse = this.eventRequestService.createEventRequest(
                 request.getName(),
                 request.getDescription(),
                 request.getDate(),
@@ -36,7 +36,8 @@ public class EventRequestApi {
                 EventStatus.PENDING
         );
         return ResponseEntity.ok(
-                Map.of("message", "Eventanfrage für '" + request.getName() + "' erfolgreich übermittelt!")
+                Map.of("message", "Eventanfrage für '" + request.getName() + "' erfolgreich übermittelt!" +
+                                  " KI-Analyse: " + aiResponse)
         );
     }
 

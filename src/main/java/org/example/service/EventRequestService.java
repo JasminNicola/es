@@ -7,6 +7,7 @@ import org.example.repository.HotelAvailibilityRepository;
 import org.example.service.inputDto.EventRequestDto;
 import org.example.service.outputDto.EventRequestDtoOutput;
 import org.example.service.outputDto.HotelInfoDto;
+import org.example.service.outputDto.LocationInfoDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,7 @@ public class EventRequestService {
 
     }
 
-    public void createEventRequest(String name, String description, LocalDate date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
+    public String createEventRequest(String name, String description, LocalDate date, Integer participants, String location, Boolean internationalGuests, EventType eventType, String catering, String specialNotes, EventStatus status) {
         Event event = new Event(name, description, date, participants, location, internationalGuests, eventType, catering, specialNotes, status);
         UserEmployee owner= this.userService.getLoggedInUserId();
         if (owner != null) {
@@ -44,16 +45,16 @@ public class EventRequestService {
         this.eventRepository.save(event);
 /// todo was ist noch wichtig für eine KI prüfung
       // immer prüfen
-            createPromtForAIAnalysis(date, participants, internationalGuests);
+            return createPromtForAIAnalysis(date, participants, internationalGuests);
     }
 
-    private void createPromtForAIAnalysis(LocalDate date, Integer participants, Boolean internationalGuests) {
+    private String createPromtForAIAnalysis(LocalDate date, Integer participants, Boolean internationalGuests) {
         //TODO AI prüft ob ausreichend  verfügbar sind bei internationalen Guesten, idealer weise alle participants in einem Hotel
         System.out.println("createPromtForAIAnalysis called with date: " + date + ", participants: " + participants + ", internationalGuests: " + internationalGuests);
         //feedback der events
         List<Event> events = this.eventRepository.getEventWithFeedback();
         List<HotelInfoDto> hotelSimulations = new ArrayList<>();
-        List<EventLocation> eventLocations = new ArrayList<>();
+        List<LocationInfoDto> eventLocations = new ArrayList<>();
 
         if(internationalGuests==true) {
             //TODO Liste der Hotels mit verfügbaren Zimmern zurückgeben // Prototyp anfrage H2 Database später HotelApi
@@ -62,13 +63,18 @@ public class EventRequestService {
                 h.setAvailabilities(hotelAvailibilityRepository.getAvailibilityByHotelId(h.getId()));
             }
         }
-        String responseHotelAvailibility = olamaService.checkForAvailibilHotels(date, participants,hotelSimulations, events,internationalGuests);
-        // TODO von hier muss mit der info weiter gearbeitet werden
+
 
         //Rooms
-        eventLocations=this.eventLocationRepository.findAll();
-        for (EventLocation e : eventLocations) {
-            System.out.println(e.getLocationName()+e.getAvailabilities());        }
+        eventLocations=this.eventLocationRepository.findAllLocations();
+        for (LocationInfoDto e : eventLocations) {
+            System.out.println(e.getLocationName()+e.getAvailabilities());
+        }
+
+
+        String responseAi = olamaService.checkForAvailibilHotels(date, participants,hotelSimulations, events,internationalGuests, eventLocations);
+        // TODO von hier muss mit der info weiter gearbeitet werden
+        return responseAi;
 
     }
 

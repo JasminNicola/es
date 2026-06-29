@@ -1,7 +1,9 @@
 package org.example.service;
 
 import org.example.model.Event;
+import org.example.model.EventLocation;
 import org.example.service.outputDto.HotelInfoDto;
+import org.example.service.outputDto.LocationInfoDto;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,37 +17,16 @@ public class OllamaService {
 
     private final RestTemplate restTemplate= new RestTemplate();
 
-    public String checkForAvailibilHotels(LocalDate date, Integer participants, List<HotelInfoDto> hotelSimulations , List<Event> events,Boolean internationalGuests) {
+    public String checkForAvailibilHotels(LocalDate date, Integer participants, List<HotelInfoDto> hotelSimulations , List<Event> events, Boolean internationalGuests,List<LocationInfoDto> eventLocations) {
         //TODO AI prüft ob ausreichend  verfügbar sind bei internationalen Guesten, idealer weise alle participants in einem Hotel
         //TODO Liste der Hotels mit verfügbaren Zimmern zurückgeben // Prototyp anfrage H2 Database später HotelApi
         //TODO im Feedback soll geprüft werden ob Hotels negativ aufgefallen sind und diese in Zukunft nicht mehr berücksichtigt werden sollen
-        System.out.println("OllamaService checkForAvailibilHotels called with date: " + date + ", participants: " + participants);
-
-//        Map<String,Object> message = Map.of(
-//                "role", "user", "content", "Prüfe ob am " + date + " ausreichend Hotelzimmer für " + participants + " Teilnehmer verfügbar sind." +
-//                        "Bitte berücksichtige folgende Hotels:" + hotelSimulations.stream()
-//                        .map(h -> String.format("Hotel: %s, Verfügbarkeit: %s , Preis pro Nacht: %.2f"
-//                                , h.getHotelName(), h.getAvailabilities().stream().map(a -> String.format(String.valueOf(a.getDate()),a.getAvailableRooms(),a.getBookedRooms())), h.getPricePerNight()
-//                        ))
-//                        .collect(Collectors.joining("\n"))+
-//                        "Berücksichtige auch folgende Events mit Feedback:" + events.stream().filter(e -> e.getFeedback() != null).map(e -> "Event: " + e.getName() + " Feedback: " + e.getFeedback()).toList() +
-//                        " Bitte bestätige kurz dass du die Hotelanfrage prüfst. Wenn möglich sollen alle in einem Hotel sein, sollte es an diesem Tag nicht genügend platz geben schlag bitte einen Termin vor."
-//                +                 " Bitte gib die Antwort in folgendem Format zurück: " +
-//                        "{ \"message\": { \"content\": \"Antwort hier\" } }"+
-//                        " Die antwort soll eine Hotelempfehlung enthalten, wenn nötig auf mehrere hotells aufteilen oder einen alternativ termin mit hotel vorschlagen , bei negativem Feedback zu einem Hotel soll dies nur berücksichtigt werden wenn kein anderes verfügbar ist.."
-//        );
-
         Map<String, Object> message=null;
         if(internationalGuests==true) {
-            message= messageHotels(date, participants, hotelSimulations, events);
+            message= messageHotels(date, participants, hotelSimulations, events, eventLocations);
         } else {
-            message= messagewithoutInternationalGuests(date, participants, events);
+            message= messagewithoutInternationalGuests(date, participants, events,eventLocations);
         }
-
-
-
-
-        System.out.println("Ollama request: " + message);
 
         Map<String,Object> body = Map.of(
                 "model", "llama3.2",
@@ -58,16 +39,16 @@ public class OllamaService {
 
         Map response2 = (Map) response.get("message");
 
-
-        System.out.println("Ollama response: " + response2);
-
         return (String) response2.get("content");
     }
+
+
 //TODO räume müssen übergeben und geprüft werden  Räume müssen auch bei anfragen mit hotells geprüft werdn
-    private Map<String,Object> messagewithoutInternationalGuests(LocalDate date, Integer participants,  List<Event> events) {
+    private Map<String,Object> messagewithoutInternationalGuests(LocalDate date, Integer participants,  List<Event> events,List< LocationInfoDto> eventLocations) {
         Map<String, Object> messagewithoutInternationalGuests= Map.of(
                 "role", "user",
-                "content", "Prüfe ob am " + date + " ein raum verfügbar ist für " + participants + " Teilnehmer verfügbar sind. "
+                "content", "Prüfe ob am " + date + " ein raum verfügbar ist für " + participants + " Teilnehmer verfügbar ist. "
+
 
                         + " Berücksichtige auch folgende Events mit Feedback: "
                         + events.stream()
@@ -85,7 +66,7 @@ public class OllamaService {
         return messagewithoutInternationalGuests;
     }
 
-    private Map<String,Object> messageHotels(LocalDate date, Integer participants, List<HotelInfoDto> hotelSimulations, List<Event> events) {
+    private Map<String,Object> messageHotels(LocalDate date, Integer participants, List<HotelInfoDto> hotelSimulations, List<Event> events, List< LocationInfoDto> eventLocations) {
         Map<String, Object> messageHotels= Map.of(
                 "role", "user",
                 "content", "Prüfe ob am " + date + " ausreichend Hotelzimmer für " + participants + " Teilnehmer verfügbar sind. "

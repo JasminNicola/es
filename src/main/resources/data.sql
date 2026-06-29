@@ -103,7 +103,9 @@ INSERT INTO hotel_availabilities (hotel_simulation_id, date, available_rooms, bo
 INSERT INTO Event_locations (location_name) values ('Auditorium'),
                                                   ('Atrium'),
                                                   ('Sprthalle'),
-                                                  ('Studio');
+                                                  ('Studio'),
+                                                  ('B31'),
+                                                  ('B4');
 
 insert into LOCATION_AVAILABILITIES (DATE,ROOM_AVAILABLE,EVENT_LOCATION_ID) values
                                                                                 ('2026-08-01',true,1),
