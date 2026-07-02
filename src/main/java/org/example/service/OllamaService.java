@@ -79,7 +79,7 @@ public class OllamaService {
         Response Format
 
         Possible or Not Possible
-       
+
         If not possible, provide the Reason and an Alternative Date.:
 
         , Reason: (name the reason(s) why the requested date is not possible)
@@ -136,63 +136,64 @@ public class OllamaService {
 
     private Map<String,Object> messageHotels(LocalDate date, Integer participants, List<HotelInfoDto> hotelSimulations, List<Event> events, List< LocationInfoDto> eventLocations) {
         String prompt = """
-        Task
+Task
 
-        Evaluate the following event request.
+Evaluate the following event request.
 
-        Event Date:
-        %s
+Event Date:
+%s
 
-        Number of Participants:
-        %d
+Number of Participants:
+%d
 
-        Available Event Locations:
-        %s
+Available Event Locations:
+%s
 
-        Available Hotels:
-        %s
+Available Hotels:
+%s
 
-        Previous Event Feedback:
-        %s
+Previous Event Feedback:
+%s
 
-        Rules
+Rules
 
-        1. Check whether an event location is available on the requested date.
-        2. The selected location must have enough capacity for all participants.
-        3. If no availability information exists for a location on the requested date, consider the location unavailable.
-        4. Check whether enough hotel rooms are available.
-        5. If possible, accommodate all participants in one hotel.
-        6. Otherwise, distribute participants across multiple hotels.
-        7. If no hotel availability exists for the requested date, consider the hotel unavailable.
-        8. Consider previous negative feedback when recommending locations or hotels. Only recommend them if no better alternative exists.
-        9. Check whether the requested date is a public holiday in Hesse, Germany, and mention the holiday by name if applicable.
-        10. Consider bridge days associated with public holidays.
-        11. Check whether there is a trade fair or major event in the Rhine-Main area that could affect availability.
-        12. If the requested date is not suitable, suggest the closest reasonable alternative date.
+1. Check whether an event location is available on the requested date.
+2. The selected location must have enough capacity for all participants.
+3. If no availability information exists for a location on the requested date, consider the location unavailable.
+4. Check whether enough hotel rooms are available.
+5. If possible, accommodate all participants in one hotel.
+6. Otherwise, distribute participants across multiple hotels.
+7. If no hotel availability exists for the requested date, consider the hotel unavailable.
+8. Consider previous negative feedback when recommending locations or hotels. Only recommend them if no better alternative exists.
+9. Check whether the requested date is a public holiday in Hesse, Germany, and mention the holiday by name if applicable.
+10. Consider bridge days associated with public holidays.
+11. Check whether there is a trade fair or major event in the Rhine-Main area that could affect availability.
+12. If the requested date is not suitable, suggest the closest reasonable alternative date.
 
-        Response Format
+Response Format
 
-        Possible or Not Possible
-        
-        If not possible, provide the Reason and an Alternative Date.:
+Status:
+-Possible or Not Possible
 
-        Reason: (name the reason(s) why the requested date is not possible)
-        Event location is booked or Hotel is not availability or Public holiday/Bridge day+ name or Major event or Previous negative feedback
+If not possible, provide the Reason and an Alternative Date.
 
-//        Recommended Event Location:
-//        <Location name>
-//
-//        Recommended Hotel(s):
-//        <Hotel name(s)>
+Important:
+- If the event is NOT possible, provide ONLY ONE reason.
+- Do not list multiple reasons.
+- Choose the most important blocking reason only.
+- Do not explain further.
 
-        , Alternative Date:
-        <Date DD.MM.YY>
+Reason: <single reason only>
+- Event location is booked OR Hotel is not available OR Public holiday/Bridge day + name OR Major event OR Previous negative feedback
 
-        Summary:
-        - Confirm whether the event request can be be accepted or explain why it cannot.
+Alternative Date:
+<Date DD.MM.YY>
 
-        Respond only in this format without any introduction or additional explanation.
-        """
+Summary:
+- Confirm whether the event request can be accepted or not.
+
+Respond only in this format without any introduction or additional explanation.
+"""
                 .formatted(
                         date,
                         participants,
@@ -200,6 +201,72 @@ public class OllamaService {
                         getHotelInformations(hotelSimulations),
                         getFeedback(events)
                 );
+//                String prompt = """
+//        Task
+//
+//        Evaluate the following event request.
+//
+//        Event Date:
+//        %s
+//
+//        Number of Participants:
+//        %d
+//
+//        Available Event Locations:
+//        %s
+//
+//        Available Hotels:
+//        %s
+//
+//        Previous Event Feedback:
+//        %s
+//
+//        Rules
+//
+//        1. Check whether an event location is available on the requested date.
+//        2. The selected location must have enough capacity for all participants.
+//        3. If no availability information exists for a location on the requested date, consider the location unavailable.
+//        4. Check whether enough hotel rooms are available.
+//        5. If possible, accommodate all participants in one hotel.
+//        6. Otherwise, distribute participants across multiple hotels.
+//        7. If no hotel availability exists for the requested date, consider the hotel unavailable.
+//        8. Consider previous negative feedback when recommending locations or hotels. Only recommend them if no better alternative exists.
+//        9. Check whether the requested date is a public holiday in Hesse, Germany, and mention the holiday by name if applicable.
+//        10. Consider bridge days associated with public holidays.
+//        11. Check whether there is a trade fair or major event in the Rhine-Main area that could affect availability.
+//        12. If the requested date is not suitable, suggest the closest reasonable alternative date.
+//
+//        Response Format
+//
+//        Status:
+//        -Possible or Not Possible
+//
+//        If not possible, provide the Reason and an Alternative Date.:
+//
+//        Reason: (name the reason(s) why the requested date is not possible)
+//        -Event location is booked or Hotel is not availability or Public holiday/Bridge day+ name or Major event or Previous negative feedback
+//
+////        Recommended Event Location:
+////        -<Location name>
+////
+////        Recommended Hotel(s):
+////        <Hotel name(s)>
+//
+//        , Alternative Date:
+//        <Date DD.MM.YY>
+//
+//        Summary:
+//        - Confirm whether the event request can be be accepted or explain why it cannot.
+//
+//        Respond only in this format without any introduction or additional explanation.
+//        """
+//                .formatted(
+//                        date,
+//                        participants,
+//                        getStringEventLocations(eventLocations),
+//                        getHotelInformations(hotelSimulations),
+//                        getFeedback(events)
+//                );
 
         Map<String, Object> messageHotels= Map.of(
                 "role", "user",
