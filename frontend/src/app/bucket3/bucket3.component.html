@@ -12,15 +12,15 @@
       <button class="primary-btn" (click)="logout()">Logout</button>
     </div>
 
+    <!-- ⭐ Dynamic checklist -->
     <section class="bucket-section">
       <h2 class="section-title">Why you were placed in this bucket</h2>
+
       <ul class="reason-list">
-        <li>Executive Board / Leadership Team / Merck Family is attending</li>
-        <li>More than 199 participants</li>
-        <li>External venue or multiple rooms / breakout sessions</li>
-        <li>Technical requirements (AV, streaming, stage, translation)</li>
-        <li>Branding, communication or moderation required</li>
-        <li>Complex logistics or multiple service providers involved</li>
+        <li *ngFor="let reason of getComplexReasons()" class="reason-item">
+          <span class="reason-icon">✔</span>
+          <span class="reason-text">{{ reason }}</span>
+        </li>
       </ul>
     </section>
 

@@ -1,24 +1,80 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import {SidebarRightService} from "../layout/sidebar-right/sidebar-right.service";
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-bucket3',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './bucket3.component.html',
-  styleUrl: './bucket3.component.css'
+  styleUrls: ['./bucket3.component.css']
 })
 export class Bucket3Component {
-  constructor(private router: Router, private http: HttpClient) {}
 
-  logout() {
-    this.http.post('http://localhost:8080/api/logout', {})
-      .subscribe({
-        next: () => {
-          this.router.navigate(['/login']);
-        }
-      });
+  type: string = "";
+  participants: string = "";
+  international: string = "";
+  participantsType: string = "";
+  management: string = "";
+  location: string = "";
+  services: string[] = [];
+  breakouts: string = "";
+  purpose: string = "";
+
+  constructor(private router: Router) {
+
+    const data = this.router.getCurrentNavigation()?.extras.state;
+
+    if (data) {
+      this.type = data['type'];
+      this.participants = data['participants'];
+      this.international = data['international'];
+      this.participantsType = data['participantsType'];
+      this.management = data['management'];
+      this.location = data['location'];
+      this.services = data['services'];
+      this.breakouts = data['breakouts'];
+      this.purpose = data['purpose'];
+    }
+  }
+
+  logout() {}
+
+  getComplexReasons(): string[] {
+    const reasons: string[] = [];
+
+    if (this.management !== "none") {
+      reasons.push("Executive Board / Leadership Team / Merck Family is attending");
+    }
+
+    if (this.participants === "large" || this.participants === "xlarge") {
+      reasons.push("More than 199 participants");
+    }
+
+    if (this.location === "external" || this.breakouts === "true") {
+      reasons.push("External venue or multiple rooms / breakout sessions");
+    }
+
+    if (this.services.includes("av") ||
+      this.services.includes("streaming") ||
+      this.services.includes("translation")) {
+      reasons.push("Technical requirements (AV, streaming, stage, translation)");
+    }
+
+    if (this.services.includes("branding") ||
+      this.services.includes("communication") ||
+      this.services.includes("moderator")) {
+      reasons.push("Branding, communication or moderation required");
+    }
+
+    if (this.international === "yes") {
+      reasons.push("International guests require additional coordination");
+    }
+
+    if (this.services.length > 3) {
+      reasons.push("Complex logistics or multiple service providers involved");
+    }
+
+    return reasons;
   }
 }

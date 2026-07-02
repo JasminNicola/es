@@ -22,6 +22,17 @@ public class EventRequestApi {
 
     @PostMapping("/events/create-request")
     public ResponseEntity<?> createEvent(@RequestBody EventRequestDto request) {
+        System.out.println("Im Backend angekommen");
+        System.out.println("Event Request Details:");
+        System.out.println("Name: " + request.getName());
+        System.out.println("Description: " + request.getDescription());
+        System.out.println("Date: " + request.getDate());
+        System.out.println("Participants (max): " + request.getParticipants());
+        System.out.println("Location: " + request.getLocation());
+        System.out.println("International Guests: " + request.getInternationalGuests());
+        System.out.println("Event Type: " + request.getEventType());
+        System.out.println("Catering: " + request.getCatering());
+        System.out.println("Special Notes: " + request.getSpecialNotes());
 
         String aiResponse = this.eventRequestService.createEventRequest(
                 request.getName(),

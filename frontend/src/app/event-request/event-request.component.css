@@ -198,3 +198,33 @@
   color: #d9534f;
   font-weight: bold;
 }
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-window {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.popup-window h2 {
+  margin-bottom: 15px;
+}
+
+.popup-window p {
+  margin-bottom: 25px;
+  font-size: 16px;
+}
