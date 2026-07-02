@@ -1,9 +1,12 @@
-.layout{
-  display:flex;
-  height: 240vh;
+.layout {
+  display: flex;
+  height: 100vh; /* Sidebar geht bis ganz unten */
+  overflow: hidden;
 }
 
-.content{
-  flex:1;
-  padding:2rem;
+.content {
+  flex: 1;
+  overflow-y: auto;
+  background: #f7f7f7; /* optional: leichtes Grau statt Weiß */
+  padding: 2rem;
 }

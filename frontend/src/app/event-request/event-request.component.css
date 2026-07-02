@@ -1,31 +1,200 @@
-/*.btn-secondary:hover { border-color: var(--muted); color: var(--text); }*/
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background: #f5f7fb;
+}
 
-.btn-primary {
-  padding: 10px 28px;
-  /**background: linear-gradient(135deg, var(--accent), var(--accent2));*/
-  border: none;
-  /** border-radius: var(--radius);*/
-  color: #111;
-  font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: opacity .2s;
-  min-width: 150px;
+.form-card {
+  background: #ffffff;
+  width: 960px;
+  padding: 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border: 1px solid #e5e5e5;
+  font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.form-header {
+  margin-bottom: 2rem;
+}
+
+.header-accent {
+  width: 60px;
+  height: 6px;
+  background: #00a58a; /* var(--green_header) */
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: #666;
+  margin-top: .3rem;
+  font-size: 1rem;
+}
+
+.form-section {
+  margin-bottom: 2.5rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #004c97; /* var(--merck_logo_blau) */
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: .6rem;
+  margin-bottom: 1.2rem;
 }
-.btn-primary:hover:not(:disabled) { opacity: .88; }
-.btn-primary:disabled { opacity: .4; cursor: not-allowed; }
 
-.spinner {
-  width: 18px; height: 18px;
-  border: 2px solid #111;
-  border-top-color: transparent;
+.section-num {
+  background: #00a58a;
+  color: white;
+  padding: .3rem .7rem;
+  border-radius: 6px;
+  font-size: .9rem;
+}
+
+.catering-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.radio-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 210px;
+  text-align: center;
+  transition: all .2s;
+  position: relative;
+  background: #fafbff;
+}
+
+.radio-card:hover {
+  border-color: #004c97;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+.radio-card input {
+  display: none;
+}
+
+.radio-box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #004c97;
   border-radius: 50%;
-  animation: spin .7s linear infinite;
-  display: inline-block;
+  margin: 0 auto .5rem;
+  display: block;
+  background: #ffffff;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
 
+.radio-card input:checked ~ .radio-box {
+  background: #004c97;
+  border-color: #004c97;
+}
+
+.radio-label {
+  font-size: .9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  cursor: pointer;
+  font-size: .9rem;
+}
+
+.checkbox-label input {
+  display: none;
+}
+
+.checkbox-box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #004c97;
+  border-radius: 4px;
+  display: inline-block;
+  background: #ffffff;
+}
+
+.checkbox-label input:checked + .checkbox-box {
+  background: #004c97;
+}
+
+.checkbox-text {
+  color: #333;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  background: #00a58a;
+  color: white;
+  padding: .7rem 1.6rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 220px;
+  font-size: .95rem;
+}
+
+.btn-primary:hover {
+  background: #00866f;
+}
+/* Grid für die drei Felder */
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Einzelnes Feld */
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-weight: 600;
+  color: #004c97;
+  margin-bottom: .4rem;
+}
+
+.field input {
+  padding: .7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: .95rem;
+  background: #fafbff;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.field input:focus {
+  border-color: #004c97;
+  box-shadow: 0 0 0 3px rgba(0,76,151,0.15);
+  outline: none;
+}
+
+.required {
+  color: #d9534f;
+  font-weight: bold;
+}

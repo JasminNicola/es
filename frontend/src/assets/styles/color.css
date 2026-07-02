@@ -5,3 +5,9 @@
   --merck_purple: #503291;
   --merck_logo_blau: #0e69b0;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+

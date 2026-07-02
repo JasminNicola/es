@@ -19,6 +19,7 @@
   color: var(--merck_logo_blau);
   background-color:white;
   transition:0.2s ease;
+  font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .doesNothing:hover{

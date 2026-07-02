@@ -22,7 +22,7 @@ export class AppComponent {
   rightButtonLabel=''
   rightButtonAction:()=>void =()=>{}
 
-  title = 'frontend';
+  title = 'Events & Live Communication Support Service';
   username = '';
   password = '';
   errorMessage = '';

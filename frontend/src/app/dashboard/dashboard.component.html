@@ -1,56 +1,62 @@
-<p>dashboard works!</p>
-<button (click)="goToEventRequest()" )>Zum EventItem Request</button>
+<div class="content-container">
 
-<div >
-  Hallo
-</div>
+  <!-- Header mit Titel + Buttons -->
+  <div class="content-header">
+    <h2>Alle Events</h2>
 
-<button (click)="getUsersEvents()">Events laden</button>
-
-
-<div class="filter-bereich">
-  <input type="text" placeholder="Nach Event suchen..." (input)="filtereEvents($event)">
-</div>
-
-< Container für die vertikale Liste >
-<div class="event-liste">
-  <div class="event-zeile header-zeile">
-    <span class="spalten-titel">Id</span>
-    <span class="spalten-titel">Eventname</span>
-    <span class="spalten-titel">Date</span>
-    <span class="spalten-titel">Participants</span>
-    <span class="spalten-titel">Location</span>
-    <span class="spalten-titel">International</span>
-    <span class="spalten-titel">EventType</span>
-    <span class="spalten-titel">Catering</span>
-    <span class="spalten-titel">Description</span>
-    <span class="spalten-titel">Special Notes</span>
-    <span class="spalten-titel">Status</span>
-    <span class="spalten-titel aktionen-titel">Action</span>
+    <div class="actions">
+      <button class="primary-btn" (click)="goToEventRequest()">Neuen Event anlegen</button>
+      <button class="primary-btn" (click)="getUsersEvents()">Events laden</button>
+      <button class="primary-btn" (click)="logout()">Logout</button>
+    </div>
   </div>
 
-  <ng-template #noEvents>
-    <p>No events available.</p>
-  </ng-template>
-
-  <div *ngFor="let event of eventsItems" >
-    <div class="event-info">
-      <span class="event-id">{{ event.id }}</span>
-      <span class="event-titel">{{ event.name }}</span>
-      <span class="event-datum">{{ event.date | date:'dd.MM.yyyy' }}</span>
-      <span class="event-teilnehmer">{{ event.participants }}</span>
-      <span class="location">{{ event.location }}</span>
-      <span class="event-international">{{ event.internationalGuests ? 'International' : 'National' }}</span>
-      <span class="event-eventType">{{ event.eventType }}</span>
-      <span class="event-catering">{{ event.catering }}</span>
-      <span class="event-beschreibung">{{ event.description }}</span>
-      <span class="event-specialNotes">{{ event.specialNotes }}</span>
-      <span class="event-status">{{ event.status }}</span>
-    </div>
-
-    <div class="event-aktionen">
-      <button (click)="bearbeiteEvent(event.id)" class="btn-bearbeiten">Bearbeiten</button>
-    </div>
-
+  <!-- Suchfeld -->
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Nach Event suchen..."
+      (input)="filtereEvents($event)"
+    >
   </div>
+
+  <!-- Tabelle -->
+  <table class="event-table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Eventname</th>
+      <th>Date</th>
+      <th>Participants</th>
+      <th>Location</th>
+      <th>International</th>
+      <th>EventType</th>
+      <th>Catering</th>
+      <th>Description</th>
+      <th>Special Notes</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let evt of gefilterteEvents">
+      <td>{{ evt.id }}</td>
+      <td>{{ evt.name }}</td>
+      <td>{{ evt.date }}</td>
+      <td>{{ evt.participants }}</td>
+      <td>{{ evt.location }}</td>
+      <td>{{ evt.internationalGuests }}</td>
+      <td>{{ evt.eventType }}</td>
+      <td>{{ evt.catering }}</td>
+      <td>{{ evt.description }}</td>
+      <td>{{ evt.specialNotes }}</td>
+      <td>{{ evt.status }}</td>
+      <td>
+        <button class="small-btn" (click)="bearbeiteEvent(evt.id)">Öffnen</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
 </div>

@@ -1,0 +1,160 @@
+Du bekommst:
+
+die richtige Stelle, wo der Code hin muss
+
+die korrekte Struktur
+
+ein sauberes eventRequest‑Objekt
+
+eine Loading‑ und Success‑Anzeige
+
+und ich baue es so ein, dass erst gespeichert wird, und dann die Bucket‑Weiterleitung passiert
+
+⭐ 1) Du brauchst zuerst ein vollständiges eventRequest‑Objekt
+In deiner TS:
+
+ts
+eventRequest = {
+  name: '',
+  date: '',
+  location: '',
+  type: '',
+  participants: '',
+  participantsType: '',
+  management: '',
+  services: [] as string[],
+  breakouts: '',
+  purpose: ''
+};
+Und eine Reset‑Funktion:
+
+ts
+emptyForm() {
+  return {
+    name: '',
+    date: '',
+    location: '',
+    type: '',
+    participants: '',
+    participantsType: '',
+    management: '',
+    services: [],
+    breakouts: '',
+    purpose: ''
+  };
+}
+⭐ 2) Beim Absenden musst du die Klassifizierungsdaten in eventRequest kopieren
+Vor dem POST:
+
+ts
+this.eventRequest.type = this.type;
+this.eventRequest.participants = this.participants;
+this.eventRequest.participantsType = this.participantsType;
+this.eventRequest.management = this.management;
+this.eventRequest.services = this.services;
+this.eventRequest.breakouts = this.breakouts;
+this.eventRequest.purpose = this.purpose;
+⭐ 3) Jetzt baue ich dir den POST‑Request sauber in onSubmit() ein
+Hier ist deine fertige, funktionierende onSubmit(), die:
+
+eventRequest befüllt
+
+an dein Backend sendet
+
+Erfolg/Fehler anzeigt
+
+erst danach die Bucket‑Weiterleitung macht
+
+✅ FERTIGE onSubmit() (Copy & Paste)
+ts
+onSubmit() {
+
+  // 1) EventRequest mit Klassifizierungsdaten befüllen
+  this.eventRequest.type = this.type;
+  this.eventRequest.participants = this.participants;
+  this.eventRequest.participantsType = this.participantsType;
+  this.eventRequest.management = this.management;
+  this.eventRequest.services = this.services;
+  this.eventRequest.breakouts = this.breakouts;
+  this.eventRequest.purpose = this.purpose;
+
+  this.isLoading = true;
+  this.successMessage = '';
+  this.errorMessage = '';
+
+  // 2) Anfrage speichern
+  this.http.post('http://localhost:8080/api/events/create-request', this.eventRequest)
+    .subscribe({
+      next: (response: any) => {
+        this.isLoading = false;
+        this.successMessage = response.message ?? 'Eventanfrage erfolgreich übermittelt!';
+
+        // Formular zurücksetzen
+        this.eventRequest = this.emptyForm();
+
+        // 3) Bucket-Weiterleitung NACH erfolgreichem Speichern
+        this.routeToBucket();
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.errorMessage = 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es erneut.';
+        console.error('EventItem request failed:', error);
+      }
+    });
+}
+⭐ 4) Die Bucket‑Logik kommt in eine eigene Methode
+Damit es sauber bleibt:
+
+ts
+routeToBucket() {
+
+  // C4 – Celebration → Bucket 4
+  if (this.type === "celebration" || this.purpose === "celebration") {
+    this.goTo("bucket4");
+    return;
+  }
+
+  // C3 – HR Training → Bucket 3
+  if (this.type === "training" || this.purpose === "training") {
+    this.goTo("bucket3");
+    return;
+  }
+
+  const flagshipServices = [
+    "venue", "av", "registration", "branding",
+    "streaming", "moderator", "communication", "translation"
+  ];
+
+  const isFlagshipOrComplex =
+    this.management !== "none" ||
+    this.participants === "large" ||
+    this.participants === "xlarge" ||
+    this.location === "external" ||
+    this.breakouts === "true" ||
+    this.services.some(s => flagshipServices.includes(s));
+
+  if (isFlagshipOrComplex) {
+    this.goTo("bucket3");
+    return;
+  }
+
+  const isFunctional =
+    this.type === "event" ||
+    this.type === "meeting" ||
+    this.participants === "medium" ||
+    this.participants === "small";
+
+  if (isFunctional) {
+    this.goTo("bucket2");
+    return;
+  }
+
+  this.goTo("bucket1");
+}
+⭐ 5) Ergebnis
+✔ Deine Anfrage wird gespeichert
+✔ Backend bekommt alle Daten
+✔ Formular wird zurückgesetzt
+✔ Bucket‑Routing passiert erst nach erfolgreichem Speichern
+✔ Keine Konflikte mit deiner bisherigen Logik
+✔ Alles sauber getrennt und wartbar

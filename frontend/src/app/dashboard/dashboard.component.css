@@ -1,49 +1,74 @@
-/* Container für alle Events (untereinander) */
-.event-liste {
-  display: flex;
-  flex-direction: column;
-  gap: 12px; /* Abstand zwischen den Event-Zeilen */
-  margin-top: 20px;
+.content-container {
+  background: white;
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Einzelne Zeile (Inhalte nebeneinander) */
-.event-zeile {
+.content-header {
   display: flex;
-  justify-content: space-between; /* Schiebt Infos nach links, Button nach rechts */
-  align-items: center; /* Richtet Elemente vertikal mittig aus */
-  padding: 15px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.primary-btn {
+  background-color: var(--green_header);
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border: none;
   border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
-/* Infos innerhalb der Zeile (nebeneinander) */
-.event-info {
-  display: flex;
-  gap: 24px; /* Abstand zwischen Titel, Datum und Kategorie */
-  flex-grow: 1; /* Nutzt den verfügbaren Platz optimal aus */
+.primary-btn:hover {
+  background-color: #0b7d4d;
 }
 
-/* Optionale Formatierung für Text-Hierarchie */
-.event-zeile header-zeile{
-  font-weight: bold;
-  min-width: 200px; /* Verhindert das Springen bei unterschiedlichen Textlängen */
+.search-box {
+  margin-bottom: 1.5rem;
 }
 
-.event-datum {
-  color: #666;
+.search-box input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-.btn-bearbeiten {
-  padding: 8px 16px;
-  background-color: #007bff;
+.event-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.event-table th {
+  background-color: var(--merck_logo_blau);
+  color: white;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.event-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.small-btn {
+  background-color: var(--merck_logo_blau);
   color: white;
   border: none;
+  padding: 0.4rem 0.8rem;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.btn-bearbeiten:hover {
-  background-color: #0056b3;
+.small-btn:hover {
+  background-color: #004a99;
 }
-
