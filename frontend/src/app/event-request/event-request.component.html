@@ -3,27 +3,27 @@
 
     <div class="form-header">
       <div class="header-accent"></div>
-      <h1>Eventanfrage – Klassifizierung</h1>
+      <h1>Event Request – Classification  </h1>
       <p class="subtitle">
-        Bitte beantworten Sie die folgenden Fragen, damit wir Ihr Meeting oder Event richtig einordnen können.
+        Please answer the following questions so we can correctly classify your meeting or event.
       </p>
     </div>
 
     <form #questionForm="ngForm" (ngSubmit)="onSubmit()" class="event-form">
       <!-- 00 – Eventdetails -->
       <section class="form-section">
-        <h2 class="section-title"><span class="section-num">00</span> Basisinformationen zum Event</h2>
+        <h2 class="section-title"><span class="section-num">00</span> Basic Event Information</h2>
 
         <div class="input-grid">
 
           <div class="field">
-            <label for="name">Eventname <span class="required">*</span></label>
+            <label for="name">Event Name <span class="required">*</span></label>
             <input id="name" type="text" [(ngModel)]="eventRequest.name"
-                   name="name" required placeholder="z.B. Jahrestagung 2025" />
+                   name="name" required placeholder="e.g., Annual Conference 2025" />
           </div>
 
           <div class="field">
-            <label for="date">Datum <span class="required">*</span></label>
+            <label for="date">Date <span class="required">*</span></label>
             <input id="date" type="date" [(ngModel)]="eventRequest.date"
                    name="date" required />
           </div>
@@ -33,7 +33,7 @@
 
       <!-- 01 – Was möchten Sie organisieren? -->
       <section class="form-section">
-        <h2 class="section-title"><span class="section-num">01</span> Was möchten Sie organisieren?</h2>
+        <h2 class="section-title"><span class="section-num">01</span> What would you like to organize? </h2>
 
         <div class="catering-options">
           <label class="radio-card">
@@ -51,26 +51,26 @@
           <label class="radio-card">
             <input type="radio" name="type" value="training" [(ngModel)]="type">
             <span class="radio-box"></span>
-            <span class="radio-label">HR Training / Schulung</span>
+            <span class="radio-label">HR Training / Workshop</span>
           </label>
 
           <label class="radio-card">
             <input type="radio" name="type" value="celebration" [(ngModel)]="type">
             <span class="radio-box"></span>
-            <span class="radio-label">Celebration / Feier</span>
+            <span class="radio-label">Celebration / Social Event</span>
           </label>
         </div>
       </section>
 
       <!-- 02 – Wie viele Teilnehmer werden erwartet? -->
       <section class="form-section">
-        <h2 class="section-title"><span class="section-num">02</span> Wie viele Teilnehmer werden erwartet?</h2>
+        <h2 class="section-title"><span class="section-num">02</span> How many participants are expected?</h2>
 
         <div class="catering-options">
           <label class="radio-card">
             <input type="radio" name="participants" value="small" [(ngModel)]="participants">
             <span class="radio-box"></span>
-            <span class="radio-label">Bis 20</span>
+            <span class="radio-label">Up to 20</span>
           </label>
 
           <label class="radio-card">
@@ -88,45 +88,63 @@
           <label class="radio-card">
             <input type="radio" name="participants" value="xlarge" [(ngModel)]="participants">
             <span class="radio-box"></span>
-            <span class="radio-label">Mehr als 199</span>
+            <span class="radio-label">More than 199</span>
           </label>
         </div>
       </section>
 
       <!-- 03 – Wer nimmt teil? -->
       <section class="form-section">
-        <h2 class="section-title"><span class="section-num">03</span> Wer nimmt teil?</h2>
+        <h2 class="section-title"><span class="section-num">03</span> Who will participate?</h2>
 
         <div class="catering-options">
           <label class="radio-card">
             <input type="radio" name="participantsType" value="internal" [(ngModel)]="participantsType">
             <span class="radio-box"></span>
-            <span class="radio-label">Nur interne Mitarbeitende</span>
+            <span class="radio-label">Internal employees only</span>
           </label>
 
           <label class="radio-card">
             <input type="radio" name="participantsType" value="mixed" [(ngModel)]="participantsType">
             <span class="radio-box"></span>
-            <span class="radio-label">Interne und externe Teilnehmer</span>
+            <span class="radio-label">Internal and external participants</span>
           </label>
         </div>
       </section>
 
+<!-- 04 kommen internationale gäste?-->
+      <section class="form-section">
+        <h2 class="section-title"><span class="section-num">03b</span> Will international guests attend?</h2>
+
+        <div class="catering-options">
+          <label class="radio-card">
+            <input type="radio" name="international" value="yesInter" [(ngModel)]="international">
+            <span class="radio-box"></span>
+            <span class="radio-label">Yes</span>
+          </label>
+
+          <label class="radio-card">
+            <input type="radio" name="international" value="noInter" [(ngModel)]="international">
+            <span class="radio-box"></span>
+            <span class="radio-label">No</span>
+          </label>
+        </div>
+      </section>
       <!-- 04 – Nimmt Top-Management teil? -->
       <section class="form-section">
-        <h2 class="section-title"><span class="section-num">04</span> Nimmt Top-Management teil?</h2>
+        <h2 class="section-title"><span class="section-num">04</span> Will top management attend?</h2>
 
         <div class="catering-options">
           <label class="radio-card">
             <input type="radio" name="management" value="none" [(ngModel)]="management">
             <span class="radio-box"></span>
-            <span class="radio-label">Nein</span>
+            <span class="radio-label">No</span>
           </label>
 
           <label class="radio-card">
             <input type="radio" name="management" value="executiveBoard" [(ngModel)]="management">
             <span class="radio-box"></span>
-            <span class="radio-label">Executive Board / GL-Mitglied</span>
+            <span class="radio-label">Executive Board / Leadership Team</span>
           </label>
 
           <label class="radio-card">
@@ -139,7 +157,7 @@
 
       <!-- 05 – Wo findet die Veranstaltung statt? -->
       <section class="form-section">
-        <h2 class="section-title"><span class="section-num">05</span> Wo findet die Veranstaltung statt?</h2>
+        <h2 class="section-title"><span class="section-num">05</span> Where will the event take place?</h2>
 
         <div class="catering-options">
           <label class="radio-card">
@@ -157,27 +175,27 @@
           <label class="radio-card">
             <input type="radio" name="location" value="external" [(ngModel)]="location">
             <span class="radio-box"></span>
-            <span class="radio-label">Externe Location</span>
+            <span class="radio-label">External Venue</span>
           </label>
         </div>
       </section>
 
       <!-- 06 – Welche Unterstützung benötigen Sie? -->
       <section class="form-section">
-        <h2 class="section-title"><span class="section-num">06</span> Welche Unterstützung benötigen Sie?</h2>
+        <h2 class="section-title"><span class="section-num">06</span> What support do you need?</h2>
 
         <div class="checkbox-grid">
           <label class="checkbox-label" *ngFor="let s of [
-            {label:'Raumbuchung', value:'room'},
+            {label:'Room booking', value:'room'},
             {label:'Catering', value:'catering'},
-            {label:'Venue-Suche', value:'venue'},
-            {label:'AV & Technik', value:'av'},
-            {label:'Registrierung', value:'registration'},
-            {label:'Kommunikation', value:'communication'},
+            {label:'Venue sourcing', value:'venue'},
+            {label:'AV & Technical support', value:'av'},
+            {label:'Registration', value:'registration'},
+            {label:'Communication', value:'communication'},
             {label:'Moderator', value:'moderator'},
             {label:'Branding & Design', value:'branding'},
             {label:'Streaming', value:'streaming'},
-            {label:'Übersetzung', value:'translation'}
+            {label:'Translation', value:'translation'}
           ]">
             <input type="checkbox"
                    [value]="s.value"
@@ -191,57 +209,57 @@
 
       <!-- 07 – Breakout-Sessions? -->
       <section class="form-section">
-        <h2 class="section-title"><span class="section-num">07</span> Breakout-Sessions / mehrere Räume?</h2>
+        <h2 class="section-title"><span class="section-num">07</span> Breakout sessions / multiple rooms?</h2>
 
         <div class="catering-options">
           <label class="radio-card">
             <input type="radio" name="breakouts" value="true" [(ngModel)]="breakouts">
             <span class="radio-box"></span>
-            <span class="radio-label">Ja</span>
+            <span class="radio-label">Yes</span>
           </label>
 
           <label class="radio-card">
             <input type="radio" name="breakouts" value="false" [(ngModel)]="breakouts">
             <span class="radio-box"></span>
-            <span class="radio-label">Nein</span>
+            <span class="radio-label">No</span>
           </label>
         </div>
       </section>
 
       <!-- 08 – Hauptzweck -->
       <section class="form-section">
-        <h2 class="section-title"><span class="section-num">08</span> Hauptzweck der Veranstaltung</h2>
+        <h2 class="section-title"><span class="section-num">08</span> Main purpose of the event</h2>
 
         <div class="catering-options">
           <label class="radio-card">
             <input type="radio" name="purpose" value="business" [(ngModel)]="purpose">
             <span class="radio-box"></span>
-            <span class="radio-label">Business Meeting / fachlicher Austausch</span>
+            <span class="radio-label">Business meeting / professional exchange</span>
           </label>
 
           <label class="radio-card">
             <input type="radio" name="purpose" value="training" [(ngModel)]="purpose">
             <span class="radio-box"></span>
-            <span class="radio-label">Training / Entwicklung / Education</span>
+            <span class="radio-label">Training / Development / Education</span>
           </label>
 
           <label class="radio-card">
             <input type="radio" name="purpose" value="celebration" [(ngModel)]="purpose">
             <span class="radio-box"></span>
-            <span class="radio-label">Celebration / Team-Event / Feier</span>
+            <span class="radio-label">Celebration / Team-Event </span>
           </label>
 
           <label class="radio-card">
             <input type="radio" name="purpose" value="flagship" [(ngModel)]="purpose">
             <span class="radio-box"></span>
-            <span class="radio-label">Flagship / strategisches Leadership-Event</span>
+            <span class="radio-label">Flagship / Strategic Leadership-Event</span>
           </label>
         </div>
       </section>
 
       <div class="form-actions">
         <button type="submit" class="btn-primary">
-          Weiter zur passenden Unterstützung →
+          Continue to the appropriate support →
         </button>
       </div>
 

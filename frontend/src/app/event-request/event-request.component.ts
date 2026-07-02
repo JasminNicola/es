@@ -22,6 +22,7 @@ export class EventRequestComponent {
   // -----------------------------
   type: string = "";
   participants: string = "";
+  international: string="";
   participantsType: string = "";
   management: string = "";
   location: string = "";
