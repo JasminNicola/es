@@ -305,11 +305,10 @@
         <!-- Step 1: Backend Submit -->
         <button type="button"
                 class="btn-primary"
-                (click)="sendToBackend()"
-                [disabled]="isLoading">
-          Submit Request →
+                (click)="sendToBackend()">
+          <span *ngIf="!isLoading">Anfrage senden →</span>
+          <span *ngIf="isLoading" class="spinner"></span>
         </button>
-
       </div>
 
     </form>
