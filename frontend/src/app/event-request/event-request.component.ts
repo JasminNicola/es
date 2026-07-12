@@ -148,7 +148,7 @@ export class EventRequestComponent {
 
     // Bucket 4
     if (this.type === "celebration" || this.purpose === "celebration") {
-      this.goTo("bucket4");
+      this.router.navigate(['/bucket4'], { state: this.collectState() })
       return;
     }
 
@@ -185,12 +185,13 @@ export class EventRequestComponent {
       this.participants === "small";
 
     if (isFunctional) {
-      this.goTo("bucket2");
+      this.router.navigate(['/bucket2'], { state: this.collectState() });
       return;
     }
 
     // Bucket 1
-    this.goTo("bucket1");
+    this.router.navigate(['/bucket1'], { state: this.collectState() });
+
   }
 
   // ⭐ Router-State Collector (vollständig)

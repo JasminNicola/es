@@ -1,0 +1,74 @@
+.bucket-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.bucket-card {
+  width: 100%;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.bucket-header {
+  margin-bottom: 2rem;
+}
+
+.header-accent {
+  width: 60px;
+  height: 6px;
+  background: #005bbb;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  color: #555;
+}
+
+.bucket-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.reason-list,
+.support-list,
+.question-list {
+  list-style: none;
+  padding: 0;
+}
+
+.reason-item,
+.support-list li,
+.question-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.reason-icon {
+  color: #008000;
+  margin-right: 0.5rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.4rem;
+  background: #005bbb;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.back-link {
+  margin-top: 2rem;
+}

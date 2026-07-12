@@ -1,1 +1,82 @@
-<p>bucket2 works!</p>
+<div class="bucket-wrapper">
+  <div class="bucket-card">
+
+    <div class="bucket-header">
+      <div class="header-accent"></div>
+      <h1>Functional & Cross‑Functional Meeting / Event</h1>
+      <p class="subtitle">
+        Your request has been classified as a <strong>functional or cross‑functional meeting</strong>.
+        This means your event has a medium level of complexity and can be organized using
+        our internal booking tools, with optional support depending on your needs.
+      </p>
+
+      <button class="primary-btn" (click)="logout()">Logout</button>
+    </div>
+
+    <!-- ⭐ Dynamic checklist -->
+    <section class="bucket-section">
+      <h2 class="section-title">Why you were placed in this bucket</h2>
+
+      <ul class="reason-list">
+        <li *ngFor="let reason of getFunctionalReasons()" class="reason-item">
+          <span class="reason-icon">✔</span>
+          <span class="reason-text">{{ reason }}</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ⭐ What you can do now -->
+    <section class="bucket-section">
+      <h2 class="section-title">What you can do now</h2>
+
+      <p>
+        You can organize your meeting or event directly using our internal booking tools.
+        Choose the option that fits your needs:
+      </p>
+
+      <ul class="support-list">
+        <li>
+          Book rooms or event spaces via
+          <a href="https://gastronomy-da.merckgroup.com/Home/Index" target="_blank">
+            EventIS
+          </a>
+        </li>
+
+        <li>
+          Order drinks or catering via
+          <a href="https://gastronomy-da.merckgroup.com/Home/Index" target="_blank">
+            EventIS Catering
+          </a>
+        </li>
+
+        <li>
+          Book external venues via
+          <a href="https://evarooms.merckgroup.com/Topic/Corporate-Sourcing/travel-fleet-events/events/hrs-meetings-solutions"
+             target="_blank">
+            HRS Meeting Solutions
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ⭐ Helpful questions -->
+    <section class="bucket-section">
+      <h2 class="section-title">Helpful questions to get started</h2>
+
+      <ul class="question-list">
+        <li>Is this a functional or cross‑functional team meeting?</li>
+        <li>Do you need catering or only drinks?</li>
+        <li>Do you need a larger room or multiple rooms?</li>
+        <li>Is an external venue required?</li>
+        <li>Are 20–99 participants expected?</li>
+        <li>Do you need basic support such as room setup?</li>
+      </ul>
+    </section>
+
+    <div class="back-link">
+      <a routerLink="/event-request">← Start a new classification</a>
+    </div>
+
+  </div>
+</div>
+

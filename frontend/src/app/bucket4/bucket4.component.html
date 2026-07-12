@@ -1,1 +1,81 @@
-<p>bucket4 works!</p>
+<div class="bucket-wrapper">
+  <div class="bucket-card">
+
+    <div class="bucket-header">
+      <div class="header-accent"></div>
+      <h1>Celebration Event</h1>
+      <p class="subtitle">
+        Your request has been classified as a <strong>celebration or social event</strong>.
+        These events are informal, focus on employee engagement and can be organized
+        directly using our internal booking tools.
+      </p>
+
+      <button class="primary-btn" (click)="logout()">Logout</button>
+    </div>
+
+    <!-- ⭐ Dynamic checklist -->
+    <section class="bucket-section">
+      <h2 class="section-title">Why you were placed in this bucket</h2>
+
+      <ul class="reason-list">
+        <li *ngFor="let reason of getCelebrationReasons()" class="reason-item">
+          <span class="reason-icon">✔</span>
+          <span class="reason-text">{{ reason }}</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ⭐ What you can do now -->
+    <section class="bucket-section">
+      <h2 class="section-title">What you can do now</h2>
+
+      <p>
+        Celebration events can be organized directly using our internal booking tools.
+        Choose the option that fits your needs:
+      </p>
+
+      <ul class="support-list">
+        <li>
+          Book rooms or event spaces via
+          <a href="https://gastronomy-da.merckgroup.com/Home/Index" target="_blank">
+            EventIS
+          </a>
+        </li>
+
+        <li>
+          Order catering via
+          <a href="https://gastronomy-da.merckgroup.com/Home/Index" target="_blank">
+            EventIS Catering
+          </a>
+        </li>
+
+        <li>
+          Book external venues via
+          <a href="https://evarooms.merckgroup.com/Topic/Corporate-Sourcing/travel-fleet-events/events/hrs-meetings-solutions"
+             target="_blank">
+            HRS Meeting Solutions
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ⭐ Helpful questions -->
+    <section class="bucket-section">
+      <h2 class="section-title">Helpful questions to get started</h2>
+
+      <ul class="question-list">
+        <li>Is this a celebration or informal team event?</li>
+        <li>Do you need catering or drinks?</li>
+        <li>Do you need decoration or branding?</li>
+        <li>Is an external venue required?</li>
+        <li>How many participants do you expect?</li>
+        <li>Is this a summer party, Christmas party or team get‑together?</li>
+      </ul>
+    </section>
+
+    <div class="back-link">
+      <a routerLink="/event-request">← Start a new classification</a>
+    </div>
+
+  </div>
+</div>
