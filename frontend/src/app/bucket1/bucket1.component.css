@@ -5,12 +5,13 @@
 }
 
 .bucket-card {
-  width: 100%;
-  max-width: 900px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: #ffffff;
+  width: 960px;
+  padding: 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border: 1px solid #e5e5e5;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .bucket-header {
@@ -35,9 +36,31 @@
 }
 
 .section-title {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #004c97;
   margin-bottom: 1rem;
 }
+.support-list {
+  list-style: none;
+  padding: 0;
+}
+
+.support-list li {
+  display: block !important;          /* ⭐ erzwingt Block-Layout */
+  text-align: left;                   /* oder right, wenn du willst */
+  margin-bottom: 1.4rem;
+}
+
+.support-list li p {
+  margin: 0 0 0.4rem 0;               /* Abstand zwischen Text und Button */
+}
+
+.support-list li a.btn-primary {
+  display: inline-block !important;   /* ⭐ Button unter dem Text */
+  margin-top: 0.4rem;
+}
+
 
 .reason-list,
 .support-list,
@@ -61,14 +84,26 @@
 
 .btn-primary {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.8rem 1.4rem;
-  background: #005bbb;
+  background: #00a58a;
   color: white;
-  border-radius: 6px;
+  padding: .8rem 1.6rem;
+  border-radius: 8px;
   text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
 }
-
+.btn-primary:hover {
+  background: #00866f;
+}
 .back-link {
   margin-top: 2rem;
+}
+
+.back-link a {
+  color: #004c97;
+  text-decoration: none;
+  font-weight: 600;
+}
+.back-link a:hover {
+  text-decoration: underline;
 }
